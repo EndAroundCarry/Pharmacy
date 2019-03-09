@@ -1,0 +1,46 @@
+/message/AdaugareMedicamenteSistem=Adding new types of drugs to the system
+/message/AdaugareMedicamenteStoc=Adding medication to stock
+/message/CautareMedicamente=Search for drugs
+/message/ScoatereMedicamente=Removing medication
+/message/Inventar=Inventory
+/message/GenereazaComandaStoc=Generate stock order
+/message/Istoric=Stock adjustment history
+/message/VizualizareStoc= View stock
+/message/Setari=Settings
+
+/message/NumeBarcode=Enter barcode names
+/message/NumeBrand=Enter brand name
+/message/Detalii=Enter the details
+/message/AlegeTip=Choose type (divisible / integer)
+/message/Divizabil=Divisible
+/message/NumarSubdiviziuni=Enter the number of subdivisions
+/message/DetaliiCutie=Box details
+/message/LungimeCutie=Introduceti lungimea cutiei
+/message/LatimeCutie=Introduceti latimea cutiei
+/message/InaltimeCutie=Enter the box height
+/message/AfostIntrodusBarcode=The barcode {barcode} drug was introduced into stock
+/message/SpecificatiiGresit=Specification has been entered incorrectly
+
+/message/ScanatiProdului=Scan the product by entering the barcode :
+/message/IntroducetiAltTipMedicament= There is no medicine with this barcode. Do you want to enter a new type of medicine? (Yes / No)
+/message/da=yes
+/message/nu=no
+/message/SertarulPotrivit=The right drawer is
+/message/AdaugatiMedicamentul=Add the medicine here (Yes / No)
+/message/MedicamentBarcode=The barcode drug
+/message/AfostAdaugatSertar=was added to the drawer
+
+/message/BarcodeSauNumeMedicament=Insert the barcode or drug name
+/message/este in sertarul=is in the drawer
+/message/NuEsteMedicamentul=No drug found
+/message/NumarCutii=Number of boxes
+
+
+/message/ro = Romainian
+/message/en =English
+/message/AceastaLimbaNuExista = This language doesn't exist
+/message/SetatiLimbaDorita =Set the language
+/message/Romana=Romainan
+/message/Engleza=English
+/message/Iesire = Exit
+/message/Inapoi = Back

@@ -1,0 +1,70 @@
+/message/AdaugareMedicamenteSistem = Adaugare de noi tipuri de medicamente in sistem
+/message/AdaugareMedicamenteStoc=Adaugare de medicamente in stoc 
+/message/CautareMedicamente=Cautare de medicamente
+/message/ScoatereMedicamente=Scoatearea de medicamente
+/message/Inventar=Inventar
+/message/GenereazaComandaStoc=Genereaza comanda stoc
+/message/Istoric=Istoric ajustari stoc
+/message/VizualizareStoc=Vizualizare stoc
+/message/Setari=Setari
+
+/message/NumeBarcode=Introduceti nume barcode
+/message/NumeBrand=Introduceti nume brand
+/message/Detalii=Introduceti detaliile
+/message/AlegeTip=Alegeti tipul(divizabil/intreg)
+/message/Divizabil=divizabil
+/message/NumarSubdiviziuni=Introduceti numarul de subdiviziuni
+/message/DetaliiCutie=Detalii cutie
+/message/LungimeCutie=Introduceti lungimea cutiei
+/message/LatimeCutie=Introduceti latimea cutiei
+/message/InaltimeCutie=Introduceti inaltimea cutiei
+/message/AfostIntrodusBarcode=A fost introdus in stoc medicamentul cu barcode
+/message/SpecificatiiGresit=Specificatiile au fost introduse gresit
+
+/message/ScanatiProdului=Scanati produsul introducand barcod-ul 
+/message/IntroducetiAltTipMedicament= Nu exista nici un medicament cu acest barcode.Doriti sa introduceti un nou tip de medicament?(Da/Nu)
+/message/da=da
+/message/nu=nu
+/message/SertarulPotrivit=Sertarul potrivit este
+/message/AdaugatiMedicamentul=Adaugati medicamentul aici?(Da/Nu)
+/message/MedicamentBarcode=Medicamentul cu barcode-ul
+/message/AfostAdaugatSertar=a fost adaugat in sertarul
+
+
+/message/BarcodeSauNumeMedicament=Introduceti bacod-ul sau numele medicamentului
+/message/este in sertarul= este in sertarul
+/message/NuEsteMedicamentul= Nu s-a gasit medicamentul
+/message/NumarCutii= Numar de cutii
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+/message/
+
+
