@@ -39,20 +39,20 @@ public class Client {
 	}
 
 	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
-		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "intreg");
-		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "intreg");
-		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "intreg");
-		pharmacy.addMedicine("22", "algocalmin", "asd", new Box(3, 3, 3), 3, "divizibil");
-		pharmacy.addMedicine("222", "Strepsils", "asd", new Box(3, 3, 3), 0, "intreg");
+		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "nu");
+		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "nu");
+		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "nu");
+		pharmacy.addMedicine("22", "algocalmin", "asd", new Box(3, 3, 3), 3, "da");
+		pharmacy.addMedicine("222", "Strepsils", "asd", new Box(3, 3, 3), 0, "nu");
 		 pharmacy.addToSuggestedDrawer("A1", "111");
+		 pharmacy.addToSuggestedDrawer("A2", "22");
+		 pharmacy.addToSuggestedDrawer("C2", "22");
 		 /*
 		pharmacy.addToSuggestedDrawer("A1", "111");
 		pharmacy.addToSuggestedDrawer("A1", "222");
-		pharmacy.addToSuggestedDrawer("A2", "22");
 		pharmacy.addToSuggestedDrawer("A3", "1221");
 		pharmacy.addToSuggestedDrawer("B2", "111");
 		pharmacy.addToSuggestedDrawer("B2", "121");
-		pharmacy.addToSuggestedDrawer("C2", "22");
 		pharmacy.addToSuggestedDrawer("C3", "222");
 		pharmacy.addToSuggestedDrawer("C3", "222");
 		pharmacy.addToSuggestedDrawer("C4", "121");
@@ -176,8 +176,11 @@ public class Client {
 				i++;
 				
 		}
-		System.out.println("Introduceti indexul medicamentului de scos:");
+		System.out.println("Introduceti indexul medicamentului de scos: (0=abort)");
 		int numberIndex = kb.readInt();
+		if(numberIndex==0) {
+			return;
+		}
 		Medicine medToRemove = pharmacy.getRequestedProduct(numberIndex, medsForChoosing);
 		System.out.println("Introduceti numarul de cutii/subdiviziuni de scos:");
 		int howManyToRemove = kb.readInt();
@@ -212,8 +215,11 @@ public class Client {
 	}
 
 	public void addInStoc() {
-		System.out.println("Barcode:");
+		System.out.println("Verificare barcode:");
 		String barcode = kb.readLine();
+		if(barcode.equals("")) {
+			return;
+		}
 		if (!pharmacy.hasBarcode(barcode)) {
 			System.out.println("Nu exista medicament cu acest barcode. Doriti sa introduceti? (Da/Nu)");
 			String response = kb.readLine();
@@ -224,16 +230,15 @@ public class Client {
 		if (pharmacy.hasBarcode(barcode)) {
 			try {
 				String suggestedDrawer = pharmacy.getRecommendedDrawer(barcode);
-				System.out
-						.println("Sertarul potrivit este " + suggestedDrawer + ". Adaugati medicamentul aici? (da/nu)");
+				System.out.println("Sertarul potrivit este " + suggestedDrawer + ". Adaugati medicamentul aici? (da/nu)");
 				String response = kb.readLine();
 				if (response.equalsIgnoreCase("nu")) {
 					return;
 				}
 				if (response.equalsIgnoreCase("da")) {
 					pharmacy.addToSuggestedDrawer(suggestedDrawer, barcode);
-					System.out.println(
-							"Medicamentul cu barcode-ul " + barcode + " a fost adaugat in sertarul " + suggestedDrawer);
+					System.out.println("Medicamentul cu barcode-ul " + barcode + " a fost adaugat in sertarul " + suggestedDrawer);
+					addInStoc();
 				}
 			} catch (NoSpaceAvailableInDrawerException e) {
 				System.out.println(e.getMessage());
@@ -270,10 +275,11 @@ public class Client {
 		String brand = kb.readLine();
 		System.out.println("Detalii:");
 		String details = kb.readLine();
-		System.out.println("Tipul(divizibil/intreg):");
+	//	System.out.println("Tipul(divizibil/intreg):");
+		System.out.println("Divizibil? (da/nu)");
 		String type = kb.readLine();
 		int subdivisions = 0;
-		if (type.equalsIgnoreCase("divizibil")) {
+		if (type.equalsIgnoreCase("da")) {
 			System.out.println("Nr subdiviziuni:");
 			subdivisions += kb.readInt();
 		}
@@ -290,9 +296,7 @@ public class Client {
 			System.out.println("A fost introdus in stoc medicamentul cu barcode: " + barcode);
 		} catch (IllegalArgumentException e) {
 			System.out.println("Specificatiile au fost introduse gresit");
-		} catch (BarcodeAlreadyExistsException e) {
-			System.out.println(e.getMessage());
-		}
+		} 
 	}
 
 }
