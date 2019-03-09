@@ -1,4 +1,4 @@
-/message/AdaugareMedicamenteSistem = Adaugare de noi tipuri de medicamente in sistem
+/message/AdaugareMedicamenteSistem = Adauga tip nou de medicament in sistem
 /message/AdaugareMedicamenteStoc=Adaugare de medicamente in stoc 
 /message/CautareMedicamente=Cautare de medicamente
 /message/ScoatereMedicamente=Scoatearea de medicamente

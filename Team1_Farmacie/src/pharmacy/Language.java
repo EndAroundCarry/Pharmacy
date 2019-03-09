@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Language {
 	
-	Properties prop = new Properties();
+	private Properties prop = new Properties();
 	
 	public Language() {
 		try {

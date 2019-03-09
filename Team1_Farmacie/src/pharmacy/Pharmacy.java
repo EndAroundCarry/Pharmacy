@@ -125,9 +125,9 @@ public class Pharmacy implements Serializable {
   }
 
   public void addMedicine(String barcode, String brand, String details, Box box, int subdivisions, String type) throws IllegalArgumentException, BarcodeAlreadyExistsException {
-    if (getMedicineByBarcode(barcode) != null) {
+    /*if (getMedicineByBarcode(barcode) != null) {
       throw new BarcodeAlreadyExistsException(barcode);
-    }
+    }*/
     if (subdivisions < 0) {
       throw new IllegalArgumentException();
     }

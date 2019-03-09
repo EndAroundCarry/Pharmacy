@@ -1,4 +1,4 @@
-/message/AdaugareMedicamenteSistem=Adding new types of drugs to the system
+/message/AdaugareMedicamenteSistem= Add new type of medicine in system
 /message/AdaugareMedicamenteStoc=Adding medication to stock
 /message/CautareMedicamente=Search for drugs
 /message/ScoatereMedicamente=Removing medication

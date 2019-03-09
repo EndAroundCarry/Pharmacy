@@ -30,12 +30,11 @@ public class Client {
 		Client client = new Client();
 
 		// doar pentru testarea metodelor din DatabaseOperations
-		DatabaseOperations db = new DatabaseOperationsImpl(client.getPharmacy());
+	/*	DatabaseOperations db = new DatabaseOperationsImpl(client.getPharmacy());
 		DataCreatorExample cr = new DataCreatorExample();
-		cr.createInitialData(db);
+		cr.createInitialData(db);*/
 
 		client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
-
 		client.run();
 	}
 
@@ -126,7 +125,6 @@ public class Client {
 		default:
 			System.out.println("invalid output");
 		}
-		
 	}
 
 	private void showSubmenuLang() {
@@ -243,9 +241,31 @@ public class Client {
 		}
 	}
 
+	public boolean checkBarcode(String barcode) {	
+		for (Medicine medicinee : pharmacy.getMedicines()) {
+			if(medicinee.getBarcode().equals(barcode)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void addMedicineInSystem() {
-		System.out.println("Barcode:");
-		String barcode = kb.readLine();
+		String barcode = "";
+		while(true) {
+			System.out.println("Barcode:");
+			barcode = kb.readLine();
+			if(!checkBarcode(barcode)) {
+				break;
+			}else {
+				System.out.println("Barcode existent. Introduceti din nou?(da/nu)");
+				String response = kb.readLine();
+				if(response.equals("nu")) {
+					return;
+				}
+			}
+		}
+		
 		System.out.println("Brand:");
 		String brand = kb.readLine();
 		System.out.println("Detalii:");
