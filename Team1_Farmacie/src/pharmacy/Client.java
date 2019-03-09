@@ -24,7 +24,7 @@ public class Client {
   public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException {
     Client client = new Client();
 
-    //doar pentru testarea metodelor din DatabaseOperations
+    //doar pentru testarea metodelor din DatabaseOperations 
     DatabaseOperations db = new DatabaseOperationsImpl(client.getPharmacy());
     DataCreatorExample cr = new DataCreatorExample();
     cr.createInitialData(db);
