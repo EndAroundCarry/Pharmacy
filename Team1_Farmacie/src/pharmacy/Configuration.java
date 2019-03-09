@@ -3,6 +3,8 @@ package pharmacy;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,8 +25,14 @@ public class Configuration implements Serializable {
   private int previousDays;
   private int nextDays;
   private String className;
+  private List <String> languages= new ArrayList<>();
+ 
 
-  public Configuration(String fileName) {
+public List<String> getLanguages() {
+	return languages;
+}
+
+public Configuration(String fileName) {
     readXml(fileName);
   }
 
@@ -90,6 +98,11 @@ public class Configuration implements Serializable {
           previousDays = Integer.parseInt(element.getElementsByTagName("previousDays").item(0).getTextContent());
           nextDays = Integer.parseInt(element.getElementsByTagName("nextDays").item(0).getTextContent());
           className = element.getElementsByTagName("initClassName").item(0).getTextContent();
+          String lang = element.getElementsByTagName("languages").item(0).getTextContent();
+          String[] splits = lang.split(",");
+          for (String s : splits) {
+            languages.add(s.trim());
+          }
         }
       }
 

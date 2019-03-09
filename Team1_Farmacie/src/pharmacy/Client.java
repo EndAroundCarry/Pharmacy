@@ -1,6 +1,7 @@
 
 package pharmacy;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class Client {
 	private final Keyboard kb = new Keyboard();
 	private final Configuration conf = new Configuration("config.xml");
 	private final Pharmacy pharmacy = new Pharmacy(conf);
+	private Language languageProp = new Language();
 
 	public Pharmacy getPharmacy() {
 		return pharmacy;
@@ -59,10 +61,13 @@ public class Client {
 		pharmacy.addToSuggestedDrawer("C4", "22");
 		pharmacy.addToSuggestedDrawer("C4", "222");
 		pharmacy.addToSuggestedDrawer("C4", "22");*/
-		
-		////////////////////////////////////////////////////////////////////////////
-		// pharmacy.test();
 	}
+	
+	
+	//verifica daca exista baza de date, daca nu exista trebuie creat
+	/*private static boolean hasDatabaseFile() {
+	    return (new File("database.ser")).exists();
+	  }*/
 
 	private void run() {
 		while (true) {
@@ -79,7 +84,7 @@ public class Client {
 
 	private void showMenu() {
 		System.out.println();
-		System.out.println("1. Adaugare nou tip medicament");
+		System.out.println("1. " + languageProp.getMessage("/message/AdaugareMedicamenteSistem"));
 		System.out.println("2. Adaugare medicamente in sertare");
 		System.out.println("3. Cautare medicament");
 		System.out.println("4. Scoate medicamente");
@@ -116,12 +121,31 @@ public class Client {
 			showSubmenuDisplay();
 			break;
 		case "10":
-			//schimare limba
+			showSubmenuLang();
 			break;
 		default:
 			System.out.println("invalid output");
 		}
 		
+	}
+
+	private void showSubmenuLang() {
+		int index = 1;
+		for (String language : conf.getLanguages()) {
+			System.out.println(index + ". " + language);
+			index++;
+		}
+		int languageChoosen = kb.readInt();
+		String numeFisier = "message_" + conf.getLanguages().get(languageChoosen-1).toLowerCase() + ".txt";
+		for (String lang : conf.getLanguages()) {
+			if(languageChoosen == (conf.getLanguages().indexOf(lang)+1)) {
+				try {
+					languageProp.getProp().load(new FileInputStream(numeFisier));
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
 	}
 
 	private void showSubmenuDisplay() {
