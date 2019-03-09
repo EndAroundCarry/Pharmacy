@@ -64,10 +64,10 @@ public class Pharmacy implements Serializable {
     } else {
       throw new InsufficientStockException();
     }
-    return getRequesteQuantity(stockNeeded, drawersWithChosenMedicine, chosenMedicine);
+    return getRequestedQuantity(stockNeeded, drawersWithChosenMedicine, chosenMedicine);
   }
 
-  public Map<String, Integer> getRequesteQuantity(int stockNeeded, Map<String, Integer> drawersWithChosenMedicine, Medicine chosenMedicine) throws InsufficientStockException {
+  public Map<String, Integer> getRequestedQuantity(int stockNeeded, Map<String, Integer> drawersWithChosenMedicine, Medicine chosenMedicine) throws InsufficientStockException {
     Map<String, Integer> drawerWithStockNeeded = new TreeMap<String, Integer>();
     int stock = 0;
     if (availableInStock(chosenMedicine, stockNeeded)) {
