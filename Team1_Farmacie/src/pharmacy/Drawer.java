@@ -23,7 +23,7 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
   }
 
   private final Configuration config;
-
+//
   public Drawer(String name, Configuration config) {
     this.name = name;
     this.config = config;
