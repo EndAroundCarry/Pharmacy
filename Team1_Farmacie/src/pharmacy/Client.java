@@ -31,7 +31,7 @@ public class Client {
 
     client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
 
-    //  client.run();
+     client.run();
 
     //metode Bogdan:
 
@@ -72,7 +72,7 @@ public class Client {
     pharmacy.addToSuggestedDrawer("C4", "22");
     pharmacy.addToSuggestedDrawer("C4", "222");
     ////////////////////////////////////////////////////////////////////////////
-    pharmacy.test();
+    //pharmacy.test();
   }
 
   private void run() {
