@@ -4,6 +4,7 @@ package pharmacy;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class Client {
 
 	private static final String EXIT = "0";
 	private final Keyboard kb = new Keyboard();
-	private Configuration conf=null;
+	private Configuration conf=null;	
 	private Pharmacy pharmacy=null;
 	private Language languageProp = new Language();
 	private Serialize serialize=new Serialize();
@@ -37,10 +38,22 @@ public class Client {
 		DataCreatorExample cr = new DataCreatorExample();
 		cr.createInitialData(db);*/
 
-		client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
-		client.run();
-		
-		
+		//client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
+		//client.run();
+//		Reflection ref=new Reflection();
+//		Pharmacy pharm=client.getPharmacy();
+//		try {
+//			try {
+//				ref.addDataThroughReflection(pharm);
+//			} catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} catch (NoSuchMethodException e) {
+//			System.out.println(e);
+//		}
+//		
+//		
 		
 	}
 

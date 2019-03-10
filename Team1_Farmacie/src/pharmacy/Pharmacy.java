@@ -9,10 +9,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+<<<<<<< Upstream, based on origin/master
+=======
+import com.ssn.common.DatabaseOperations;
+
+import exceptions.BarcodeAlreadyExistsException;
+>>>>>>> ca5ca02 Made reflection work as expected
 import exceptions.InsufficientStockException;
 import exceptions.NoSpaceAvailableInDrawerException;
 
-public class Pharmacy implements Serializable {
+public class Pharmacy implements Serializable, DatabaseOperations {
 	private static final long serialVersionUID = 1L;
 	private final List<Drawer> drawers = new ArrayList<>();
 	private final List<Medicine> medicines = new ArrayList<>();
@@ -23,6 +29,10 @@ public class Pharmacy implements Serializable {
 	public Pharmacy(Configuration config) {
 		this.config = config;
 		createDrawers();
+	}
+
+	public Configuration getConfig() {
+		return config;
 	}
 
 	public List<Medicine> getMedicines() {
@@ -370,5 +380,26 @@ public class Pharmacy implements Serializable {
 	public void test() {
 		String result = doInventory("A1");
 		System.out.println(result);
+	}
+
+	@Override
+	public void addIndivisibleDrug(String barcode, String brand, String details, int width, int height, int length) {
+		Box box = new Box(length, width, height);
+	    getMedicines().add(new EntireBoxMedicine(barcode, brand, details, box));		
+	}
+
+	@Override
+	public void addDivisibleDrug(String barcode, String brand, String details, int width, int height, int length,
+			int numberOfSubdivisions) {
+		 Box box = new Box(length, width, height);
+		 getMedicines().add(new DivisibleMedicine(barcode, brand, details, box, numberOfSubdivisions));
+		
+	}
+
+	@Override
+	public void addStock(String barcode, String drawerId, int numberOfBoxes) {
+		for (int i = 0; i < numberOfBoxes; i++) {
+		      addToSuggestedDrawer(drawerId, barcode);
+		    }
 	}
 }

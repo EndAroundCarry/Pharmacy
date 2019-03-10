@@ -38,7 +38,6 @@ public class DatabaseOperationsImpl implements DatabaseOperations {
 
   @Override
   public void addIndivisibleDrug(String barcode, String brand, String details, int width, int height, int length) {
-    //  List<Medicine> medicines = pharmacy.getMedicines();
     Box box = new Box(length, width, height);
     pharmacy.getMedicines().add(new EntireBoxMedicine(barcode, brand, details, box));
   }

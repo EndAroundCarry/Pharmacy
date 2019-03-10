@@ -6,10 +6,14 @@
 
 package pharmacy;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.ssn.common.DataCreator;
+import com.ssn.common.DataCreatorExample;
 import com.ssn.common.DatabaseOperations;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * @author <a href="mailto:bgantu@ssi-schaefer-noell.com">bgantu</a>
@@ -18,22 +22,15 @@ import com.ssn.common.DatabaseOperations;
 
 public class Reflection {
 
-  public static void main(String[] args) throws NoSuchMethodException, SecurityException {
-    //    Method met = DataCreator.class.getDeclaredMethod("createInitialData", DataCreator.class);
-    //    Method met = Class.forName("DataCreatorImpl").getMethod("createInitialData", DatabaseOperations.class);
-    //    DatabaseOperations data = new DatabaseOperationsImpl();
-    //    try {
-    //      met.invoke(data, new DataCreatorImpl());
-    //    } catch (Exception e) {
-    //      System.out.println(e.getCause().getMessage());
-    //    }
-    Method met = DataCreator.class.getMethod("createInitialData", DatabaseOperations.class);
-    try {
-      DataCreator data = new DataCreatorImpl();
-      //  met.invoke(data, new DatabaseOperationsImpl()));
-    } catch (Exception e) {
-      System.out.println(e.getCause().getMessage());
-    }
-  }
+public void addDataThroughReflection(DatabaseOperations pharmacy) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+	Class<?> className = Class.forName(((Pharmacy)pharmacy).getConfig().getClassName()); 
+	Constructor<?> constructor=className.getConstructor();
+	Object dataCreator=className.newInstance();
+	Method[] met=className.getMethods();
+	met[0].invoke(dataCreator, pharmacy);
+
+
+}
+
 
 }
