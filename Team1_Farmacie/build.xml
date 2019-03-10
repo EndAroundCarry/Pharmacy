@@ -55,6 +55,11 @@
             <classpath refid="Team1_Farmacie.classpath"/>
         </junit>
     </target>
+    <target name="Reflection">
+        <java classname="pharmacy.Reflection" failonerror="true" fork="yes">
+            <classpath refid="Team1_Farmacie.classpath"/>
+        </java>
+    </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
             <fileset dir="${junit.output.dir}">
