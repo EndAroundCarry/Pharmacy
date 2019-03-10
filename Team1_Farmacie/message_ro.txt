@@ -17,8 +17,13 @@
 /message/selecteazaLimba=Selectati limba
 /message/confirmareSchimbareLimba=Limba a fost schimbata in 
 
-/message/NumeBarcode=Introduceti nume barcode
-/message/NumeBrand=Introduceti nume brand
+---metode
+
+/message/daNu =(da/nu)
+/message/da =da
+/message/nu =nu
+/message/barcodeQuestion=Barcode existent. Introduceti din nou?
+
 /message/Detalii=Introduceti detaliile
 /message/AlegeTip=Alegeti tipul(divizabil/intreg)
 /message/Divizabil=divizabil

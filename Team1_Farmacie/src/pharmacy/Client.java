@@ -268,9 +268,9 @@ public class Client {
 			if(!checkBarcode(barcode)) {
 				break;
 			}else {
-				System.out.println("Barcode existent. Introduceti din nou?(da/nu)");
+				System.out.println(languageProp.getMessage("/message/barcodeQuestion") + languageProp.getMessage("/message/daNu"));
 				String response = kb.readLine();
-				if(response.equals("nu")) {
+				if(response.equals(languageProp.getMessage("/message/nu"))) {
 					return;
 				}
 			}
@@ -278,9 +278,8 @@ public class Client {
 		
 		System.out.println("Brand:");
 		String brand = kb.readLine();
-		System.out.println("Detalii:");
+		System.out.println("Detalii:"); //
 		String details = kb.readLine();
-	//	System.out.println("Tipul(divizibil/intreg):");
 		System.out.println("Divizibil? (da/nu)");
 		String type = kb.readLine();
 		int subdivisions = 0;
