@@ -183,18 +183,19 @@ public class Client {
 	private void showSubmenuLang() {
 		System.out.println(languageProp.getMessage("/message/selecteazaLimba"));
 		int index = 1;
-		for (String language : conf.getLanguages()) {
+	
+		for (String language:pharmacy.getConfig().getLanguages()) {
 			System.out.println(index + ". " + language);
 			index++;
 		}
 		int languageChoosen = kb.readInt();
-		if(languageChoosen > conf.getLanguages().size()) {
+		if(languageChoosen > pharmacy.getConfig().getLanguages().size()) {
 			System.out.println("invalid output");
 			return;
 		}
-		String numeFisier = "message_" + conf.getLanguages().get(languageChoosen-1).toLowerCase() + ".txt";
-		for (String lang : conf.getLanguages()) {
-			if(languageChoosen == (conf.getLanguages().indexOf(lang)+1)) {
+		String numeFisier = "message_" + pharmacy.getConfig().getLanguages().get(languageChoosen-1).toLowerCase() + ".txt";
+		for (String lang : pharmacy.getConfig().getLanguages()) {
+			if(languageChoosen == (pharmacy.getConfig().getLanguages().indexOf(lang)+1)) {
 				try {
 					languageProp.getProp().load(new FileInputStream(numeFisier));
 					System.out.println(languageProp.getMessage("/message/confirmareSchimbareLimba") + lang);

@@ -2,10 +2,12 @@ package pharmacy;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Properties;
 
-public class Language {
+public class Language implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Properties prop = new Properties();
 
 	public Language() {
