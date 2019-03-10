@@ -9,20 +9,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-<<<<<<< Upstream, based on origin/master
-=======
-import com.ssn.common.DatabaseOperations;
-
-import exceptions.BarcodeAlreadyExistsException;
->>>>>>> ca5ca02 Made reflection work as expected
 import exceptions.InsufficientStockException;
 import exceptions.NoSpaceAvailableInDrawerException;
+import com.ssn.common.*;
 
 public class Pharmacy implements Serializable, DatabaseOperations {
 	private static final long serialVersionUID = 1L;
 	private final List<Drawer> drawers = new ArrayList<>();
 	private final List<Medicine> medicines = new ArrayList<>();
-	private Language languageProp = new Language();
 
 	private final Configuration config;
 
@@ -270,7 +264,7 @@ public class Pharmacy implements Serializable, DatabaseOperations {
 			}
 		}
 		if (!found) {
-			return "Not found"; // TODO need to find a better solution for the ciobaneala
+			return "Nu s-a gasit medicamentul"; // TODO need to find a better solution for the ciobaneala
 		}
 		return result;
 	}
