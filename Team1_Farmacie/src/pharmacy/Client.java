@@ -190,7 +190,7 @@ public class Client {
 		System.out.println("Introduceti numarul de cutii/subdiviziuni de scos:");
 		int howManyToRemove = kb.readInt();
 		try {
-			Map <String, Integer> map = pharmacy.getProductLocationForRequiredMedicine(medToRemove, howManyToRemove);
+			Map <String, Integer> map = pharmacy.getProductLocationForRequiredMedicine(medToRemove, howManyToRemove); // de aruncat exceptie sau mesaj daca se introduce un index care nu exista
 			System.out.println("Puteti scoate: ");
 			for (Entry<String, Integer> entry : map.entrySet()) {
 			      System.out.println("Din sertarul " + entry.getKey() + " " + entry.getValue() + " buc.");
@@ -270,7 +270,7 @@ public class Client {
 			}else {
 				System.out.println(languageProp.getMessage("/message/barcodeQuestion") + languageProp.getMessage("/message/daNu"));
 				String response = kb.readLine();
-				if(response.equals(languageProp.getMessage("/message/nu"))) {
+				if(response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
 					return;
 				}
 			}
@@ -278,13 +278,14 @@ public class Client {
 		
 		System.out.println("Brand:");
 		String brand = kb.readLine();
-		System.out.println("Detalii:"); //
+		System.out.println(languageProp.getMessage("/message/detalii")); 
 		String details = kb.readLine();
 		System.out.println("Divizibil? (da/nu)");
+		System.out.println(languageProp.getMessage("/message/eDivizibil") + languageProp.getMessage("/message/daNu"));
 		String type = kb.readLine();
 		int subdivisions = 0;
-		if (type.equalsIgnoreCase("da")) {
-			System.out.println("Nr subdiviziuni:");
+		if (type.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+			System.out.println(languageProp.getMessage("/message/nrSubdiv"));
 			subdivisions += kb.readInt();
 		}
 		System.out.println("Detalii cutie:");

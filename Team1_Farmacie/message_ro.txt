@@ -23,6 +23,9 @@
 /message/da =da
 /message/nu =nu
 /message/barcodeQuestion=Barcode existent. Introduceti din nou?
+/message/detalii =Detalii:
+/message/eDivizibil =Divizibil?
+/message/nrSubdiv =Nr subdiviziuni:
 
 /message/Detalii=Introduceti detaliile
 /message/AlegeTip=Alegeti tipul(divizabil/intreg)

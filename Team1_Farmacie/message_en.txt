@@ -18,6 +18,9 @@
 /message/da =yes
 /message/nu =no
 /message/barcodeQuestion=Barcode already exists. Try again?
+/message/detalii =Details:
+/message/eDivizibil =Divisible?
+/message/nrSubdiv =Nr subdivisions:
 
 /message/NumeBarcode=Enter barcode names
 /message/NumeBrand=Enter brand name
