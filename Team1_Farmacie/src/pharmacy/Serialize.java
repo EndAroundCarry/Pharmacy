@@ -38,7 +38,7 @@ public class Serialize {
     return pharmacy;
   }
 
-  public static void main(String[] args) throws FileNotFoundException, IOException, IllegalArgumentException, BarcodeAlreadyExistsException {
+  public static void main(String[] args) throws FileNotFoundException, IOException, IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
     Serialize ser = new Serialize();
     Pharmacy pharmacy = new Pharmacy(new Configuration("config.xml"));
     pharmacy.addMedicine("111", "asdsadsa", "adasd", new Box(1, 12, 10), 0, "intreg");

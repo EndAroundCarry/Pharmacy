@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import exceptions.BarcodeAlreadyExistsException;
 import exceptions.InsufficientStockException;
 import exceptions.NoSpaceAvailableInDrawerException;
+import exceptions.IllegalArgumentException;
 
 public class Pharmacy implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +30,7 @@ public class Pharmacy implements Serializable {
 		return medicines;
 	}
 
-	public List<Medicine> getAllMedicineBySequence(String brandSequence) {
+	public List<Medicine> getAllMedicineBySequence(String brandSequence) throws IllegalArgumentException {
 		List<Medicine> allMedsBySeq = new ArrayList<>();
 		for (Drawer drawer : drawers) {
 			if (drawer.getMedicineByBrand(brandSequence) != null) {
@@ -41,10 +42,13 @@ public class Pharmacy implements Serializable {
 			}
 			// TODO metoda pentru punctul 1-2 de la 5
 		}
+		if(allMedsBySeq.size()==0) {
+			throw new IllegalArgumentException();
+		}
 		return allMedsBySeq;
 	}
 
-	public Medicine getRequestedProduct(int chosenMedicine, List<Medicine> allMedsBySeq) {
+	public Medicine getRequestedProduct(int chosenMedicine, List<Medicine> allMedsBySeq) throws exceptions.IllegalArgumentException {
 		if (chosenMedicine > allMedsBySeq.size()) {
 			throw new IllegalArgumentException();
 		}

@@ -3,6 +3,7 @@ package pharmacy;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,7 +27,7 @@ public class Client {
 		return pharmacy;
 	}
 
-	public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException {
+	public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException, exceptions.IllegalArgumentException {
 		Client client = new Client();
 
 		// doar pentru testarea metodelor din DatabaseOperations
@@ -38,7 +39,7 @@ public class Client {
 		client.run();
 	}
 
-	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
+	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
 		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "nu");
 		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "nu");
 		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "nu");
@@ -48,6 +49,7 @@ public class Client {
 		pharmacy.addToSuggestedDrawer("A2", "22");
 		pharmacy.addToSuggestedDrawer("C2", "22");
 		pharmacy.addToSuggestedDrawer("A1", "111");
+		pharmacy.addToSuggestedDrawer("A3", "111");
 //		pharmacy.addToSuggestedDrawer("A1", "222");
 //		pharmacy.addToSuggestedDrawer("A3", "1221");
 //		pharmacy.addToSuggestedDrawer("B2", "111");
@@ -177,7 +179,13 @@ public class Client {
 	private void removeMeds() {
 		System.out.println("Introduceti o parte din numele brandului :");
 		String brandSequence = kb.readLine();
-		List <Medicine> medsForChoosing = pharmacy.getAllMedicineBySequence(brandSequence);
+		List<Medicine> medsForChoosing=new ArrayList<Medicine>();
+		try {
+			medsForChoosing = pharmacy.getAllMedicineBySequence(brandSequence);
+		} catch (exceptions.IllegalArgumentException e2) {
+			System.out.println(e2);
+			return;
+		}
 		for(int i=1;i<=medsForChoosing.size();i++) {
 			System.out.println(i+ ". " + medsForChoosing.get(i-1));
 		}
@@ -186,7 +194,13 @@ public class Client {
 		if(numberIndex==0) {
 			return;
 		}
-		Medicine medToRemove = pharmacy.getRequestedProduct(numberIndex, medsForChoosing);
+		Medicine medToRemove=null;
+		try {
+			medToRemove = pharmacy.getRequestedProduct(numberIndex, medsForChoosing);
+		} catch (exceptions.IllegalArgumentException e1) {
+			System.out.println(e1);
+			return;
+		}
 		System.out.println("Introduceti numarul de cutii/subdiviziuni de scos:");
 		int howManyToRemove = kb.readInt();
 		try {
@@ -299,7 +313,7 @@ public class Client {
 			Box box = new Box(lenght, width, height);
 			pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
 			System.out.println("A fost introdus in stoc medicamentul cu barcode: " + barcode);
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | exceptions.IllegalArgumentException e) {
 			System.out.println("Specificatiile au fost introduse gresit");
 		} 
 	}

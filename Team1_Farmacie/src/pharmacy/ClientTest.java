@@ -31,7 +31,7 @@ public class ClientTest {
   }
 
   @Test(expected = NoSpaceAvailableInDrawerException.class)
-  public void testBoxVolumeTooBig() throws IllegalArgumentException, BarcodeAlreadyExistsException, NoSpaceAvailableInDrawerException {
+  public void testBoxVolumeTooBig() throws IllegalArgumentException, BarcodeAlreadyExistsException, NoSpaceAvailableInDrawerException, exceptions.IllegalArgumentException {
     pharmacy.addMedicine("111", "asd", "asd", new Box(70, 60, 30), 0, "intreg");
     pharmacy.getRecommendedDrawer("111");
   }
@@ -44,14 +44,14 @@ public class ClientTest {
   }*/
 
   @Test
-  public void barcodeDoesntExist() throws IllegalArgumentException, BarcodeAlreadyExistsException {
+  public void barcodeDoesntExist() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
     pharmacy.addMedicine("111", "asd", "asd", new Box(30, 30, 30), 0, "intreg");
     assertEquals(null, pharmacy.getMedicineByBarcode("112111"));
 
   }
 
   @Test
-  public void barcodeExists() throws IllegalArgumentException, BarcodeAlreadyExistsException {
+  public void barcodeExists() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
     pharmacy.addMedicine("111", "asd", "asd", new Box(30, 30, 30), 0, "intreg");
     assertEquals(new EntireBoxMedicine("111", "asd", "asd", new Box(30, 30, 30)), pharmacy.getMedicineByBarcode("111"));
 
