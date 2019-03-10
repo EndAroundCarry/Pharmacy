@@ -159,10 +159,15 @@ public class Client {
 		
 		System.out.println("1. " + languageProp.getMessage("/message/complet"));
 		System.out.println("2. " + languageProp.getMessage("/message/detaliiLocatie"));
+		System.out.println("0. " + languageProp.getMessage("/message/Inapoi"));
 		
 		String raspuns = kb.readLine();
 		
-		if (raspuns.equals("1")) {
+		if(raspuns.equals("0")) {
+			return;
+		}
+		
+		else if (raspuns.equals("1")) {
 			pharmacy.printCompleteStock();
 		}
 		else if (raspuns.equals("2")) {

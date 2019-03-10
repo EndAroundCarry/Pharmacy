@@ -16,6 +16,7 @@
 /message/idSertar=ID sertar: 
 /message/selecteazaLimba=Selectati limba
 /message/confirmareSchimbareLimba=Limba a fost schimbata in 
+/message/Inapoi = Inapoi
 
 ---metode
 
@@ -37,7 +38,3 @@
 /message/params=Sertarul potrivit este  {0}. Adaugati medicamentul aici?
 /message/params2=Medicamentul a fost adaugat in sertarul: {0}.
 /message/textCautare =Introduceti text pentru cautare:
-
-
-/message/Inapoi = Inapoi
-
