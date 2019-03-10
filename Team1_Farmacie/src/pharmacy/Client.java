@@ -47,19 +47,18 @@ public class Client {
 		 pharmacy.addToSuggestedDrawer("A1", "111");
 		 pharmacy.addToSuggestedDrawer("A2", "22");
 		 pharmacy.addToSuggestedDrawer("C2", "22");
-		 /*
 		pharmacy.addToSuggestedDrawer("A1", "111");
-		pharmacy.addToSuggestedDrawer("A1", "222");
-		pharmacy.addToSuggestedDrawer("A3", "1221");
-		pharmacy.addToSuggestedDrawer("B2", "111");
-		pharmacy.addToSuggestedDrawer("B2", "121");
-		pharmacy.addToSuggestedDrawer("C3", "222");
-		pharmacy.addToSuggestedDrawer("C3", "222");
-		pharmacy.addToSuggestedDrawer("C4", "121");
-		pharmacy.addToSuggestedDrawer("C4", "121");
-		pharmacy.addToSuggestedDrawer("C4", "22");
-		pharmacy.addToSuggestedDrawer("C4", "222");
-		pharmacy.addToSuggestedDrawer("C4", "22");*/
+//		pharmacy.addToSuggestedDrawer("A1", "222");
+//		pharmacy.addToSuggestedDrawer("A3", "1221");
+//		pharmacy.addToSuggestedDrawer("B2", "111");
+//		pharmacy.addToSuggestedDrawer("B2", "121");
+//		pharmacy.addToSuggestedDrawer("C3", "222");
+//		pharmacy.addToSuggestedDrawer("C3", "222");
+//		pharmacy.addToSuggestedDrawer("C4", "121");
+//		pharmacy.addToSuggestedDrawer("C4", "121");
+//		pharmacy.addToSuggestedDrawer("C4", "22");
+//		pharmacy.addToSuggestedDrawer("C4", "222");
+//		pharmacy.addToSuggestedDrawer("C4", "22");
 	}
 	
 	

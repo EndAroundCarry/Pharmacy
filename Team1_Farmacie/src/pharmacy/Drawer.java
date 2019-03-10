@@ -152,7 +152,7 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
   }
 
   public void removeMedicine(Medicine medicine) {
-    Iterator iterator = medicinesInDrawer.iterator();
+    Iterator<Medicine> iterator = medicinesInDrawer.iterator();
     while (iterator.hasNext()) {
       if (medicine.equals((iterator.next()))) {
         iterator.remove();
@@ -165,11 +165,14 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
     for (Medicine med : medicinesInDrawer) {
       if (medicine.equals(med)) {
         for (int i = 0; i < divisons; i++) {
+        	if(((DivisibleMedicine)med).getQuantity()==0){
+        		break;
+        	}
           ((DivisibleMedicine) med).removeDivision();
         }
       }
     }
-    Iterator iterator = medicinesInDrawer.iterator();
+    Iterator<Medicine> iterator = medicinesInDrawer.iterator();
     while (iterator.hasNext()) {
       Medicine medicineToBeRemoved = (Medicine) iterator.next();
       if ((medicine.equals(medicineToBeRemoved) && medicineToBeRemoved.getQuantity() == 0)) {
