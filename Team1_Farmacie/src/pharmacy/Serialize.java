@@ -27,7 +27,7 @@ public class Serialize {
     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("database.ser")));
     oos.writeObject(pharmacy);
     oos.close();
-    System.out.println(pharmacy);
+
   }
 
   public Pharmacy readPharmacy() throws FileNotFoundException, IOException, ClassNotFoundException {
