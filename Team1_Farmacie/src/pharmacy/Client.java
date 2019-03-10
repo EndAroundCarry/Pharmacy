@@ -39,7 +39,7 @@ public class Client {
 		cr.createInitialData(db);*/
 
 		//client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
-		//client.run();
+		client.run();
 //		Reflection ref=new Reflection();
 //		Pharmacy pharm=client.getPharmacy();
 //		try {
