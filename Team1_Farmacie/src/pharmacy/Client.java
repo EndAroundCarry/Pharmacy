@@ -1,6 +1,7 @@
 
 package pharmacy;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,9 +20,10 @@ public class Client {
 
 	private static final String EXIT = "0";
 	private final Keyboard kb = new Keyboard();
-	private final Configuration conf = new Configuration("config.xml");
-	private final Pharmacy pharmacy = new Pharmacy(conf);
+	private Configuration conf=null;
+	private Pharmacy pharmacy=null;
 	private Language languageProp = new Language();
+	private Serialize serialize=new Serialize();
 
 	public Pharmacy getPharmacy() {
 		return pharmacy;
@@ -29,14 +31,17 @@ public class Client {
 
 	public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException {
 		Client client = new Client();
-
+		client.initConfig();
 		// doar pentru testarea metodelor din DatabaseOperations
 	/*	DatabaseOperations db = new DatabaseOperationsImpl(client.getPharmacy());
 		DataCreatorExample cr = new DataCreatorExample();
 		cr.createInitialData(db);*/
 
-		client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
+		//client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
 		client.run();
+		
+		
+		
 	}
 
 	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
@@ -63,16 +68,42 @@ public class Client {
 	}
 	
 	
+	public void initConfig() {
+		if(!hasDatabaseFile()) {
+		 conf = new Configuration("config.xml");
+		 pharmacy = new Pharmacy(conf);
+		try {
+			serialize.writePharmacy(pharmacy);
+		} catch (IOException e) {
+			System.out.println("asta e");
+		}
+		}
+		else {
+			Serialize ser=new Serialize();
+			 try {
+				pharmacy = ser.readPharmacy();
+			} catch (ClassNotFoundException | IOException e) {
+				System.out.println("am prinso de cap");
+			}
+		}
+	}
+	
+	
 	//verifica daca exista baza de date, daca nu exista trebuie creat
-	/*private static boolean hasDatabaseFile() {
+	private static boolean hasDatabaseFile() {
 	    return (new File("database.ser")).exists();
-	  }*/
+	  }
 
 	private void run() {
 		while (true) {
 			showMenu();
 			String inputLine = kb.readLine();
 			if (inputLine.equals(EXIT)) {
+				try {
+					serialize.writePharmacy(pharmacy);
+				} catch (IOException e) {
+					System.out.println("Serializam");
+				}
 				return;
 			}
 			execute(inputLine);

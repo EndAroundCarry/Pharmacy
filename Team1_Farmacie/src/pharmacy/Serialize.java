@@ -38,18 +38,4 @@ public class Serialize {
     return pharmacy;
   }
 
-  public static void main(String[] args) throws FileNotFoundException, IOException, IllegalArgumentException, BarcodeAlreadyExistsException, IllegalArgumentException {
-    Serialize ser = new Serialize();
-    Pharmacy pharmacy = new Pharmacy(new Configuration("config.xml"));
-    pharmacy.addMedicine("111", "asdsadsa", "adasd", new Box(1, 12, 10), 0, "intreg");
-    pharmacy.addMedicine("123", "sd", "sd", new Box(1, 12, 10), 0, "intreg");
-    pharmacy.addMedicine("324", "as", "d", new Box(1, 1, 10), 0, "intreg");
-    pharmacy.addMedicine("312", "fa", "ad", new Box(1, 1, 5), 0, "intreg");
-    pharmacy.addToSuggestedDrawer("A1", "111");
-    pharmacy.addToSuggestedDrawer("A1", "123");
-    pharmacy.addToSuggestedDrawer("A1", "324");
-    pharmacy.addToSuggestedDrawer("A1", "312");
-    ser.writePharmacy(pharmacy);
-
-  }
 }
