@@ -12,7 +12,6 @@ import java.util.TreeMap;
 import exceptions.BarcodeAlreadyExistsException;
 import exceptions.InsufficientStockException;
 import exceptions.NoSpaceAvailableInDrawerException;
-import exceptions.IllegalArgumentException;
 
 public class Pharmacy implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -48,7 +47,7 @@ public class Pharmacy implements Serializable {
 		return allMedsBySeq;
 	}
 
-	public Medicine getRequestedProduct(int chosenMedicine, List<Medicine> allMedsBySeq) throws exceptions.IllegalArgumentException {
+	public Medicine getRequestedProduct(int chosenMedicine, List<Medicine> allMedsBySeq) throws IllegalArgumentException {
 		if (chosenMedicine > allMedsBySeq.size()) {
 			throw new IllegalArgumentException();
 		}

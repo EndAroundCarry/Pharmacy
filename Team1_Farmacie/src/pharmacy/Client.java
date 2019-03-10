@@ -27,7 +27,7 @@ public class Client {
 		return pharmacy;
 	}
 
-	public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException, exceptions.IllegalArgumentException {
+	public static void main(String[] args) throws IllegalArgumentException, BarcodeAlreadyExistsException, InsufficientStockException, IOException {
 		Client client = new Client();
 
 		// doar pentru testarea metodelor din DatabaseOperations
@@ -39,7 +39,7 @@ public class Client {
 		client.run();
 	}
 
-	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
+	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
 		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "intreg");
 		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "intreg");
 		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "intreg");
@@ -181,8 +181,8 @@ public class Client {
 		List<Medicine> medsForChoosing=new ArrayList<Medicine>();
 		try {
 			medsForChoosing = pharmacy.getAllMedicineBySequence(brandSequence);
-		} catch (exceptions.IllegalArgumentException e2) {
-			System.out.println(e2);
+		} catch (IllegalArgumentException e) {
+			System.out.println("nu s-au gasit medicamente");
 			return;
 		}
 		for(int i=1;i<=medsForChoosing.size();i++) {
@@ -196,8 +196,8 @@ public class Client {
 		Medicine medToRemove=null;
 		try {
 			medToRemove = pharmacy.getRequestedProduct(numberIndex, medsForChoosing);
-		} catch (exceptions.IllegalArgumentException e1) {
-			System.out.println(e1);
+		} catch (IllegalArgumentException e1) {
+			System.out.println("invalid output");
 			return;
 		}
 		System.out.println("Introduceti numarul de cutii/subdiviziuni de scos:");
@@ -315,7 +315,7 @@ public class Client {
 			Box box = new Box(lenght, width, height);
 			pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
 			System.out.println(languageProp.getMessage("/message/confirmareAdaugare") + barcode);
-		}catch (Exception e) {
+		}catch (IllegalArgumentException e) {
 			System.out.println(languageProp.getMessage("/message/respingereAdaugare"));
 		}
 	}
