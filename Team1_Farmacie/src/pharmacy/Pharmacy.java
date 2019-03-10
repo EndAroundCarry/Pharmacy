@@ -138,9 +138,9 @@ public class Pharmacy implements Serializable {
 		if (subdivisions < 0) {
 			throw new IllegalArgumentException();
 		}
-		if (type.equalsIgnoreCase("da")) {
+		if (type.equalsIgnoreCase("divizibil")) {
 			medicines.add(new DivisibleMedicine(barcode, brand, details, box, subdivisions));
-		} else if (type.equalsIgnoreCase("nu")) {
+		} else if (type.equalsIgnoreCase("intreg")) {
 			medicines.add(new EntireBoxMedicine(barcode, brand, details, box));
 		} else {
 			throw new IllegalArgumentException();

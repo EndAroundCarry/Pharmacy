@@ -26,6 +26,12 @@
 /message/detalii =Detalii:
 /message/eDivizibil =Divizibil?
 /message/nrSubdiv =Nr subdiviziuni:
+/message/detaliiCutie =Detalii cutie:
+/message/lungime =Lungime:
+/message/latime =Latime:
+/message/inaltime=Inaltime:
+/message/confirmareAdaugare=A fost introdus in stoc medicamentul cu barcode: 
+/message/respingereAdaugare=Informatii introduse gresit!
 
 /message/Detalii=Introduceti detaliile
 /message/AlegeTip=Alegeti tipul(divizabil/intreg)

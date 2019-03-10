@@ -39,17 +39,16 @@ public class Client {
 		client.run();
 	}
 
-	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
-		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "nu");
-		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "nu");
-		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "nu");
-		pharmacy.addMedicine("22", "algocalmin", "asd", new Box(3, 3, 3), 3, "da");
-		pharmacy.addMedicine("222", "Strepsils", "asd", new Box(3, 3, 3), 0, "nu");
+	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
+		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "intreg");
+		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "intreg");
+		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "intreg");
+		pharmacy.addMedicine("22", "algocalmin", "asd", new Box(3, 3, 3), 3, "divizibil");
+		pharmacy.addMedicine("222", "Strepsils", "asd", new Box(3, 3, 3), 0, "intreg");
 		pharmacy.addToSuggestedDrawer("A1", "111");
 		pharmacy.addToSuggestedDrawer("A2", "22");
 		pharmacy.addToSuggestedDrawer("C2", "22");
 		pharmacy.addToSuggestedDrawer("A1", "111");
-		pharmacy.addToSuggestedDrawer("A3", "111");
 //		pharmacy.addToSuggestedDrawer("A1", "222");
 //		pharmacy.addToSuggestedDrawer("A3", "1221");
 //		pharmacy.addToSuggestedDrawer("B2", "111");
@@ -294,27 +293,30 @@ public class Client {
 		String brand = kb.readLine();
 		System.out.println(languageProp.getMessage("/message/detalii")); 
 		String details = kb.readLine();
-		System.out.println("Divizibil? (da/nu)");
 		System.out.println(languageProp.getMessage("/message/eDivizibil") + languageProp.getMessage("/message/daNu"));
-		String type = kb.readLine();
+		String typeRasp = kb.readLine();
+		String type="";
 		int subdivisions = 0;
-		if (type.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+		if (typeRasp.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+			type += "divizibil";
 			System.out.println(languageProp.getMessage("/message/nrSubdiv"));
 			subdivisions += kb.readInt();
+		}else {
+			type+="intreg";
 		}
-		System.out.println("Detalii cutie:");
-		System.out.println("Lungime: ");
+		System.out.println(languageProp.getMessage("/message/detaliiCutie"));
+		System.out.println(languageProp.getMessage("/message/lungime"));
 		int lenght = kb.readInt();
-		System.out.println("Latime: ");
+		System.out.println(languageProp.getMessage("/message/latime"));
 		int width = kb.readInt();
-		System.out.println("Inaltime:");
+		System.out.println(languageProp.getMessage("/message/inaltime"));
 		int height = kb.readInt();
 		try {
 			Box box = new Box(lenght, width, height);
 			pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
-			System.out.println("A fost introdus in stoc medicamentul cu barcode: " + barcode);
-		} catch (IllegalArgumentException | exceptions.IllegalArgumentException e) {
-			System.out.println("Specificatiile au fost introduse gresit");
+			System.out.println(languageProp.getMessage("/message/confirmareAdaugare") + barcode);
+		} catch (IllegalArgumentException e) {
+			System.out.println(languageProp.getMessage("/message/respingereAdaugare"));
 		} 
 	}
 

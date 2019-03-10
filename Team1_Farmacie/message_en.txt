@@ -21,6 +21,12 @@
 /message/detalii =Details:
 /message/eDivizibil =Divisible?
 /message/nrSubdiv =Nr subdivisions:
+/message/detaliiCutie =Box details:
+/message/lungime =Length:
+/message/latime =Width:
+/message/inaltime=Height:
+/message/confirmareAdaugare=Medicine added in stock with barcode: 
+/message/respingereAdaugare=Wrong information entered!
 
 /message/NumeBarcode=Enter barcode names
 /message/NumeBrand=Enter brand name
