@@ -1,4 +1,5 @@
 start ant
-cd C:\Users\gantu\git\Pharmacy\Team1_Farmacie\bin
+timeout 3 
+cd bin
 start jar cvf Farmacie.jar *
 

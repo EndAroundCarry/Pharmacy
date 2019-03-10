@@ -264,7 +264,7 @@ public class Pharmacy implements Serializable {
 	}
 
 	// used for unit testing use with care if necessary
-	// author Bogdan the great
+	// author Bogdan
 	public Drawer getDrawerByName(String name) {
 		for (Drawer drawer : drawers) {
 			if (drawer.getName().equals(name)) {

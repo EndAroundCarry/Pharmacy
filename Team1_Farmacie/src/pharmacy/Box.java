@@ -28,4 +28,17 @@ public class Box implements Serializable {
     return "Volumul cutiei: " + getVolumeBox();
   }
 
+  public int getLenght() {
+	return lenght;
+}
+
+public int getWidth() {
+	return width;
+}
+
+public int getHeight() {
+	return height;
+}
+
+  
 }

@@ -1,2 +1,2 @@
-cd C:\Users\gantu\git\Pharmacy\Team1_Farmacie\bin	
+cd bin	
 start java -cp Farmacie.jar pharmacy.Client

@@ -47,7 +47,17 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
   }
 
   public void addMedicineToList(Medicine medicine) {
-    medicinesInDrawer.add(medicine);
+	  Box box=new Box(medicine.getBoxDetails().getLenght(), medicine.getBoxDetails().getWidth(), medicine.getBoxDetails().getHeight());
+	  
+	  if(medicine instanceof DivisibleMedicine){	  
+		 Medicine medToAdd=new DivisibleMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box, medicine.getQuantity());
+		 medicinesInDrawer.add(medToAdd);
+	  }
+	  else {
+		  Medicine medToAdd=new EntireBoxMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box);
+		  medicinesInDrawer.add(medToAdd);
+	  }
+    
   }
 
   private double getDrawerVolume() {
