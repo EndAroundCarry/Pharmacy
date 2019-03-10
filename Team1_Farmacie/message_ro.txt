@@ -1,12 +1,15 @@
-/message/AdaugareMedicamenteSistem = Adauga tip nou de medicament in sistem
-/message/AdaugareMedicamenteStoc=Adaugare de medicamente in stoc 
-/message/CautareMedicamente=Cautare de medicamente
-/message/ScoatereMedicamente=Scoatearea de medicamente
+--- meniu
+
+/message/AdaugareMedicamenteSistem =Adauga tip nou de medicament in sistem
+/message/AdaugareMedicamenteStoc=Adauga medicamente in stoc
+/message/CautareMedicamente=Cautare medicament
+/message/ScoatereMedicamente=Scoate medicamente
 /message/Inventar=Inventar
-/message/GenereazaComandaStoc=Genereaza comanda stoc
-/message/Istoric=Istoric ajustari stoc
+/message/GenereazaComandaStoc=Genereaza comanda
+/message/Istoric=Istoricul ajustarilor
 /message/VizualizareStoc=Vizualizare stoc
 /message/Setari=Setari
+/message/Iesire=Iesire
 
 /message/NumeBarcode=Introduceti nume barcode
 /message/NumeBrand=Introduceti nume brand
@@ -44,6 +47,6 @@
 /message/SetatiLimbaDorita = Setati limba dorita
 /message/Romana=Romana
 /message/Engleza=Engleza
-/message/Iesire =Iesire
+
 /message/Inapoi = Inapoi
 

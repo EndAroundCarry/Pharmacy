@@ -83,12 +83,15 @@ public class Client {
 	private void showMenu() {
 		System.out.println();
 		System.out.println("1. " + languageProp.getMessage("/message/AdaugareMedicamenteSistem"));
-		System.out.println("2. Adaugare medicamente in sertare");
-		System.out.println("3. Cautare medicament");
-		System.out.println("4. Scoate medicamente");
-		System.out.println("9. Afisare stoc");
-		System.out.println("10. SchimbaLimba");
-		System.out.println("0. Iesire");
+		System.out.println("2. " + languageProp.getMessage("/message/AdaugareMedicamenteStoc"));
+		System.out.println("3. " + languageProp.getMessage("/message/CautareMedicamente"));
+		System.out.println("4. " + languageProp.getMessage("/message/ScoatereMedicamente"));
+//		System.out.println("5. " + languageProp.getMessage("/message/Inventar"));
+//		System.out.println("6. " + languageProp.getMessage("/message/GenereazaComandaStoc"));
+//		System.out.println("7. " + languageProp.getMessage("/message/Istoric"));
+		System.out.println("8. " + languageProp.getMessage("/message/VizualizareStoc"));
+		System.out.println("9. " + languageProp.getMessage("/message/Setari"));
+		System.out.println("0. " + languageProp.getMessage("/message/Iesire"));
 	}
 
 	private void execute(String inputLine) {
@@ -115,10 +118,10 @@ public class Client {
 		case "7":
 			//vizualizare istoric
 			break;
-		case "9":
+		case "8":
 			showSubmenuDisplay();
 			break;
-		case "10":
+		case "9":
 			showSubmenuLang();
 			break;
 		default:
@@ -127,6 +130,7 @@ public class Client {
 	}
 
 	private void showSubmenuLang() {
+		System.out.println("Selectati limba");
 		int index = 1;
 		for (String language : conf.getLanguages()) {
 			System.out.println(index + ". " + language);
