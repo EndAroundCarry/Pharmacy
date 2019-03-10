@@ -34,7 +34,6 @@ public class Serialize {
     ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("database.ser")));
     Pharmacy pharmacy = (Pharmacy) ois.readObject();
     ois.close();
-    System.out.println(pharmacy);
     return pharmacy;
   }
 
