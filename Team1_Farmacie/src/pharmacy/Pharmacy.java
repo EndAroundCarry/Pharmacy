@@ -132,8 +132,7 @@ public class Pharmacy implements Serializable {
 		// TODO method may be usefull for point 3.a
 	}
 
-	public void addMedicine(String barcode, String brand, String details, Box box, int subdivisions, String type)
-			throws IllegalArgumentException {
+	public void addMedicine(String barcode, String brand, String details, Box box, int subdivisions, String type) throws IllegalArgumentException {
 
 		if (subdivisions < 0) {
 			throw new IllegalArgumentException();

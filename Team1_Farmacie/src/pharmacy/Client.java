@@ -39,7 +39,7 @@ public class Client {
 		client.run();
 	}
 
-	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException {
+	private void loadSomeData() throws IllegalArgumentException, BarcodeAlreadyExistsException, exceptions.IllegalArgumentException {
 		pharmacy.addMedicine("111", "nurofen", "asd", new Box(3, 3, 3), 0, "intreg");
 		pharmacy.addMedicine("121", "nurofen", "fsgkdghsk", new Box(10, 3, 1), 0, "intreg");
 		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "intreg");
@@ -315,9 +315,9 @@ public class Client {
 			Box box = new Box(lenght, width, height);
 			pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
 			System.out.println(languageProp.getMessage("/message/confirmareAdaugare") + barcode);
-		} catch (IllegalArgumentException e) {
+		}catch (Exception e) {
 			System.out.println(languageProp.getMessage("/message/respingereAdaugare"));
-		} 
+		}
 	}
 
 }
