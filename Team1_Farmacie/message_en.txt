@@ -25,21 +25,14 @@
 /message/lungime =Length:
 /message/latime =Width:
 /message/inaltime=Height:
-/message/confirmareAdaugare=Medicine added in stock with barcode: 
+/message/confirmareAdaugare=Medicine added in system with barcode: 
 /message/respingereAdaugare=Wrong information entered!
+/message/verificaBarcode =Check barcode:
+/message/medicamentBarcodeInexistent =This medicine does not exists. Do you want to add new medicine in the system?
+/message/params=Suggested drawer is  {0}. Add medicine here?
+/message/params2=Medicine added in drawer: {0}.
 
-/message/NumeBarcode=Enter barcode names
-/message/NumeBrand=Enter brand name
-/message/Detalii=Enter the details
-/message/AlegeTip=Choose type (divisible / integer)
-/message/Divizabil=Divisible
-/message/NumarSubdiviziuni=Enter the number of subdivisions
-/message/DetaliiCutie=Box details
-/message/LungimeCutie=Introduceti lungimea cutiei
-/message/LatimeCutie=Introduceti latimea cutiei
-/message/InaltimeCutie=Enter the box height
-/message/AfostIntrodusBarcode=The barcode {barcode} drug was introduced into stock
-/message/SpecificatiiGresit=Specification has been entered incorrectly
+
 
 /message/ScanatiProdului=Scan the product by entering the barcode :
 /message/IntroducetiAltTipMedicament= There is no medicine with this barcode. Do you want to enter a new type of medicine? (Yes / No)

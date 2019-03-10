@@ -30,20 +30,15 @@
 /message/lungime =Lungime:
 /message/latime =Latime:
 /message/inaltime=Inaltime:
-/message/confirmareAdaugare=A fost introdus in stoc medicamentul cu barcode: 
+/message/confirmareAdaugare=A fost introdus in sistem medicamentul cu barcode: 
 /message/respingereAdaugare=Informatii introduse gresit!
+/message/verificaBarcode =Verificare barcode:
+/message/medicamentBarcodeInexistent =Nu exista medicament cu acest barcode. Doriti sa introduceti medicament nou in sistem?
+/message/params=Sertarul potrivit este  {0}. Adaugati medicamentul aici?
+/message/params2=Medicamentul a fost adaugat in sertarul: {0}.
 
-/message/Detalii=Introduceti detaliile
-/message/AlegeTip=Alegeti tipul(divizabil/intreg)
-/message/Divizabil=divizabil
-/message/NumarSubdiviziuni=Introduceti numarul de subdiviziuni
-/message/DetaliiCutie=Detalii cutie
-/message/LungimeCutie=Introduceti lungimea cutiei
-/message/LatimeCutie=Introduceti latimea cutiei
-/message/InaltimeCutie=Introduceti inaltimea cutiei
-/message/AfostIntrodusBarcode = A fost introdus in stoc medicamentul cu barcode :
 
-/message/SpecificatiiGresit=Specificatiile au fost introduse gresit
+
 
 /message/ScanatiProdului=Scanati produsul introducand barcod-ul 
 /message/IntroducetiAltTipMedicament= Nu exista nici un medicament cu acest barcode.Doriti sa introduceti un nou tip de medicament?(Da/Nu)

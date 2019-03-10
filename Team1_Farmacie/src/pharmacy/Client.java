@@ -232,30 +232,30 @@ public class Client {
 		System.out.println(pharmacy.searchForMedicine(cheie));
 	}
 
-	public void addInStoc() {
-		System.out.println("Verificare barcode:");
+	public void addInStoc() { //aici
+		System.out.println(languageProp.getMessage("/message/verificaBarcode"));
 		String barcode = kb.readLine();
 		if(barcode.equals("")) {
 			return;
 		}
 		if (!pharmacy.hasBarcode(barcode)) {
-			System.out.println("Nu exista medicament cu acest barcode. Doriti sa introduceti? (Da/Nu)");
+			System.out.println(languageProp.getMessage("/message/medicamentBarcodeInexistent") + languageProp.getMessage("/message/daNu"));
 			String response = kb.readLine();
-			if (response.equalsIgnoreCase("da")) {
+			if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
 				addMedicineInSystem();
 			}
 		}
 		if (pharmacy.hasBarcode(barcode)) {
 			try {
 				String suggestedDrawer = pharmacy.getRecommendedDrawer(barcode);
-				System.out.println("Sertarul potrivit este " + suggestedDrawer + ". Adaugati medicamentul aici? (da/nu)");
+				System.out.println(languageProp.getMessageParam("/message/params", suggestedDrawer)+ languageProp.getMessage("/message/daNu"));
 				String response = kb.readLine();
-				if (response.equalsIgnoreCase("nu")) {
+				if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
 					return;
 				}
-				if (response.equalsIgnoreCase("da")) {
+				if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
 					pharmacy.addToSuggestedDrawer(suggestedDrawer, barcode);
-					System.out.println("Medicamentul cu barcode-ul " + barcode + " a fost adaugat in sertarul " + suggestedDrawer);
+					System.out.println(languageProp.getMessageParam("/message/params2", suggestedDrawer));
 					addInStoc();
 				}
 			} catch (NoSpaceAvailableInDrawerException e) {
