@@ -44,9 +44,9 @@ public class Client {
 		pharmacy.addMedicine("1221", "paracetamol", "asd", new Box(1, 3, 4), 0, "nu");
 		pharmacy.addMedicine("22", "algocalmin", "asd", new Box(3, 3, 3), 3, "da");
 		pharmacy.addMedicine("222", "Strepsils", "asd", new Box(3, 3, 3), 0, "nu");
-		 pharmacy.addToSuggestedDrawer("A1", "111");
-		 pharmacy.addToSuggestedDrawer("A2", "22");
-		 pharmacy.addToSuggestedDrawer("C2", "22");
+		pharmacy.addToSuggestedDrawer("A1", "111");
+		pharmacy.addToSuggestedDrawer("A2", "22");
+		pharmacy.addToSuggestedDrawer("C2", "22");
 		pharmacy.addToSuggestedDrawer("A1", "111");
 //		pharmacy.addToSuggestedDrawer("A1", "222");
 //		pharmacy.addToSuggestedDrawer("A3", "1221");
@@ -169,11 +169,8 @@ public class Client {
 		System.out.println("Introduceti o parte din numele brandului :");
 		String brandSequence = kb.readLine();
 		List <Medicine> medsForChoosing = pharmacy.getAllMedicineBySequence(brandSequence);
-		int i = 1;
-		for (Medicine medicine : medsForChoosing) {
-				System.out.println(i+ ". " + medicine);
-				i++;
-				
+		for(int i=1;i<=medsForChoosing.size();i++) {
+			System.out.println(i+ ". " + medsForChoosing.get(i-1));
 		}
 		System.out.println("Introduceti indexul medicamentului de scos: (0=abort)");
 		int numberIndex = kb.readInt();
