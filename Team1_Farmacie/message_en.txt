@@ -31,13 +31,7 @@
 /message/medicamentBarcodeInexistent =This medicine does not exists. Do you want to add new medicine in the system?
 /message/params=Suggested drawer is  {0}. Add medicine here?
 /message/params2=Medicine added in drawer: {0}.
-
-
-
-/message/BarcodeSauNumeMedicament=Insert the barcode or drug name
-/message/este in sertarul=is in the drawer
-/message/NuEsteMedicamentul=No drug found
-/message/NumarCutii=Number of boxes
+/message/textCautare =Insert text for searching:
 
 
 /message/Inapoi = Back

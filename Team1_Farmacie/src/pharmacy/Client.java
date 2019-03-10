@@ -227,7 +227,7 @@ public class Client {
 	}
 
 	public void searchMeds() {
-		System.out.println("Introduceti cheie: ");
+		System.out.println(languageProp.getMessage("/message/textCautare"));
 		String cheie = kb.readLine();
 		System.out.println(pharmacy.searchForMedicine(cheie));
 	}

@@ -36,14 +36,7 @@
 /message/medicamentBarcodeInexistent =Nu exista medicament cu acest barcode. Doriti sa introduceti medicament nou in sistem?
 /message/params=Sertarul potrivit este  {0}. Adaugati medicamentul aici?
 /message/params2=Medicamentul a fost adaugat in sertarul: {0}.
-
-
-
-/message/BarcodeSauNumeMedicament=Introduceti bacod-ul sau numele medicamentului
-/message/este in sertarul= este in sertarul
-/message/NuEsteMedicamentul= Nu s-a gasit medicamentul
-/message/NumarCutii= Numar de cutii
-
+/message/textCautare =Introduceti text pentru cautare:
 
 
 /message/Inapoi = Inapoi
