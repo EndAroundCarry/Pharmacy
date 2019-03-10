@@ -181,19 +181,19 @@ public class Client {
 	}
 
 	private void removeMeds() {
-		System.out.println("Introduceti o parte din numele brandului :");
+		System.out.println(languageProp.getMessage("/message/parteDinBrand"));
 		String brandSequence = kb.readLine();
 		List<Medicine> medsForChoosing=new ArrayList<Medicine>();
 		try {
 			medsForChoosing = pharmacy.getAllMedicineBySequence(brandSequence);
 		} catch (IllegalArgumentException e) {
-			System.out.println("nu s-au gasit medicamente");
+			System.out.println(languageProp.getMessage("/message/notFound"));
 			return;
 		}
 		for(int i=1;i<=medsForChoosing.size();i++) {
 			System.out.println(i+ ". " + medsForChoosing.get(i-1));
 		}
-		System.out.println("Introduceti indexul medicamentului de scos: (0=abort)");
+		System.out.println(languageProp.getMessage("/message/indexMedicament"));
 		int numberIndex = kb.readInt();
 		if(numberIndex==0) {
 			return;
@@ -205,17 +205,27 @@ public class Client {
 			System.out.println("invalid output");
 			return;
 		}
-		System.out.println("Introduceti numarul de cutii/subdiviziuni de scos:");
+		System.out.println(languageProp.getMessage("/message/nrDeScos"));
 		int howManyToRemove = kb.readInt();
 		try {
-			Map <String, Integer> map = pharmacy.getProductLocationForRequiredMedicine(medToRemove, howManyToRemove); // de aruncat exceptie sau mesaj daca se introduce un index care nu exista
-			System.out.println("Puteti scoate: ");
+			Map <String, Integer> map = pharmacy.getProductLocationForRequiredMedicine(medToRemove, howManyToRemove);
+			System.out.println(languageProp.getMessage("/message/putetiScoate"));
 			for (Entry<String, Integer> entry : map.entrySet()) {
-			      System.out.println("Din sertarul " + entry.getKey() + " " + entry.getValue() + " buc.");
+			      System.out.println(languageProp.getMessage("/message/dinSertarul") + entry.getKey() + " --> " + entry.getValue() + " buc.");
 			    }
-			System.out.println("Confirmati scoaterea?(da/nu) ");
+			System.out.println(languageProp.getMessage("/message/confirmareScoatere") + languageProp.getMessage("/message/daNu"));
 			String response = kb.readLine();
-			switch (response.toLowerCase()) {
+			if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+				pharmacy.removeFromDrawer(pharmacy.getRequestedQuantity(howManyToRemove, map, medToRemove), medToRemove);
+				System.out.println(languageProp.getMessageParam("/message/params3", howManyToRemove));
+			}else if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))){
+				return;
+			}
+			else {
+				System.out.println("Invalid input");
+				return;
+			}
+			/*switch (response.toLowerCase()) {
 			case "da":
 				pharmacy.removeFromDrawer(pharmacy.getRequestedQuantity(howManyToRemove, map, medToRemove), medToRemove);
 				System.out.println("S-au scos " + howManyToRemove + " buc de " + medToRemove);
@@ -225,7 +235,7 @@ public class Client {
 			default:
 				System.out.println("Invalid input");
 				
-			}
+			}*/
 		} catch (InsufficientStockException e) {
 			System.out.println(e.getMessage());
 		}

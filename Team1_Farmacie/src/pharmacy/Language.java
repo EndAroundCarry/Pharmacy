@@ -27,7 +27,7 @@ public class Language {
 		return prop;
 	}
 
-	public String getMessageParam(String key, String param) {
+	public String getMessageParam(String key, Object param) {
 
 		String result = getMessage(key);
 		result = result.replace("{" + 0 + "}", "" + param);	

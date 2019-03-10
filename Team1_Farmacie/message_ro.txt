@@ -38,3 +38,11 @@
 /message/params=Sertarul potrivit este  {0}. Adaugati medicamentul aici?
 /message/params2=Medicamentul a fost adaugat in sertarul: {0}.
 /message/textCautare =Introduceti text pentru cautare:
+/message/parteDinBrand=Introduceti secventa din numele brandului :
+/message/notFound =Nu s-au gasit medicamente!
+/message/indexMedicament =Introduceti indexul medicamentului de scos (sau 0 pentru a renunta):
+/message/nrDeScos =Introduceti numarul de cutii/subdiviziuni de scos:
+/message/putetiScoate=Puteti scoate: 
+/message/dinSertarul= Din sertarul 
+/message/confirmareScoatere= Confirmati scoaterea din sertar?
+/message/params3=S-au scos {0} buc.

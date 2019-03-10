@@ -33,3 +33,11 @@
 /message/params=Suggested drawer is  {0}. Add medicine here?
 /message/params2=Medicine added in drawer: {0}.
 /message/textCautare =Insert text for searching:
+/message/parteDinBrand=Insert sequence of the brand :
+/message/notFound =Medicine not found!
+/message/indexMedicament =Insert index of medicine you want to remove (or type 0 to abort):
+/message/nrDeScos =How many boxes/subdivisions do you want to remove:
+/message/putetiScoate=You can remove: 
+/message/dinSertarul= From drawer 
+/message/confirmareScoatere= Confirm medicine removal from drawer?
+/message/params3={0} pieces. has been removed.
