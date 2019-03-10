@@ -130,18 +130,23 @@ public class Client {
 	}
 
 	private void showSubmenuLang() {
-		System.out.println("Selectati limba");
+		System.out.println(languageProp.getMessage("/message/selecteazaLimba"));
 		int index = 1;
 		for (String language : conf.getLanguages()) {
 			System.out.println(index + ". " + language);
 			index++;
 		}
 		int languageChoosen = kb.readInt();
+		if(languageChoosen > conf.getLanguages().size()) {
+			System.out.println("invalid output");
+			return;
+		}
 		String numeFisier = "message_" + conf.getLanguages().get(languageChoosen-1).toLowerCase() + ".txt";
 		for (String lang : conf.getLanguages()) {
 			if(languageChoosen == (conf.getLanguages().indexOf(lang)+1)) {
 				try {
 					languageProp.getProp().load(new FileInputStream(numeFisier));
+					System.out.println(languageProp.getMessage("/message/confirmareSchimbareLimba") + lang);
 				} catch (IOException e) {
 					System.out.println(e.getMessage());
 				}
@@ -151,8 +156,8 @@ public class Client {
 
 	private void showSubmenuDisplay() {
 		
-		System.out.println("1. Complet");
-		System.out.println("2. Detalii locatie");
+		System.out.println("1. " + languageProp.getMessage("/message/complet"));
+		System.out.println("2. " + languageProp.getMessage("/message/detaliiLocatie"));
 		
 		String raspuns = kb.readLine();
 		
@@ -160,7 +165,7 @@ public class Client {
 			pharmacy.printCompleteStock();
 		}
 		else if (raspuns.equals("2")) {
-			System.out.println("ID sertar: ");
+			System.out.println(languageProp.getMessage("/message/idSertar"));
 			String drawerName = kb.readLine();
 			pharmacy.printSpecificDrawer(drawerName);
 		}

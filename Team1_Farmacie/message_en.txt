@@ -8,6 +8,11 @@
 /message/VizualizareStoc=View stock
 /message/Setari=Settings
 /message/Iesire =Exit
+/message/complet=Complete
+/message/detaliiLocatie=Location details
+/message/idSertar=Drawer ID: 
+/message/selecteazaLimba=Select language
+/message/confirmareSchimbareLimba=Language changed in 
 
 /message/NumeBarcode=Enter barcode names
 /message/NumeBrand=Enter brand name

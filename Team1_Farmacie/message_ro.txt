@@ -1,3 +1,4 @@
+(versiunea buna adela)
 --- meniu
 
 /message/AdaugareMedicamenteSistem =Adauga tip nou de medicament in sistem
@@ -10,6 +11,11 @@
 /message/VizualizareStoc=Vizualizare stoc
 /message/Setari=Setari
 /message/Iesire=Iesire
+/message/complet=Complet
+/message/detaliiLocatie=Detalii locatie
+/message/idSertar=ID sertar: 
+/message/selecteazaLimba=Selectati limba
+/message/confirmareSchimbareLimba=Limba a fost schimbata in 
 
 /message/NumeBarcode=Introduceti nume barcode
 /message/NumeBrand=Introduceti nume brand
