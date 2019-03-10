@@ -232,7 +232,7 @@ public class Client {
 		System.out.println(pharmacy.searchForMedicine(cheie));
 	}
 
-	public void addInStoc() { //aici
+	public void addInStoc() { 
 		System.out.println(languageProp.getMessage("/message/verificaBarcode"));
 		String barcode = kb.readLine();
 		if(barcode.equals("")) {

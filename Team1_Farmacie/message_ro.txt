@@ -39,29 +39,12 @@
 
 
 
-
-/message/ScanatiProdului=Scanati produsul introducand barcod-ul 
-/message/IntroducetiAltTipMedicament= Nu exista nici un medicament cu acest barcode.Doriti sa introduceti un nou tip de medicament?(Da/Nu)
-/message/da=da
-/message/nu=nu
-/message/SertarulPotrivit=Sertarul potrivit este
-/message/AdaugatiMedicamentul=Adaugati medicamentul aici?(Da/Nu)
-/message/MedicamentBarcode=Medicamentul cu barcode-ul
-/message/AfostAdaugatSertar=a fost adaugat in sertarul
-
-
 /message/BarcodeSauNumeMedicament=Introduceti bacod-ul sau numele medicamentului
 /message/este in sertarul= este in sertarul
 /message/NuEsteMedicamentul= Nu s-a gasit medicamentul
 /message/NumarCutii= Numar de cutii
 
 
-/message/ro=Romana
-/message/en=Engleza
-/message/AceastaLimbaNuExista =Aceasta limba nu exista
-/message/SetatiLimbaDorita = Setati limba dorita
-/message/Romana=Romana
-/message/Engleza=Engleza
 
 /message/Inapoi = Inapoi
 
