@@ -18,6 +18,8 @@
 /message/confirmareSchimbareLimba=Limba a fost schimbata in 
 /message/Inapoi = Inapoi
 
+/message/conf=Configurati?
+
 ---metode
 
 /message/daNu =(da/nu)

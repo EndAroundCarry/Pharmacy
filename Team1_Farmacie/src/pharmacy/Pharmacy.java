@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import exceptions.BarcodeAlreadyExistsException;
 import exceptions.InsufficientStockException;
 import exceptions.NoSpaceAvailableInDrawerException;
 

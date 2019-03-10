@@ -37,7 +37,7 @@ public class Client {
 		DataCreatorExample cr = new DataCreatorExample();
 		cr.createInitialData(db);*/
 
-		client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
+	//	client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
 		client.run();
 		
 		
@@ -70,12 +70,18 @@ public class Client {
 	
 	public void initConfig() {
 		if(!hasDatabaseFile()) {
-		 conf = new Configuration("config.xml");
-		 pharmacy = new Pharmacy(conf);
+			System.out.println(languageProp.getMessage("/message/conf")+ languageProp.getMessage("/message/daNu"));
+			String response = kb.readLine();
+			if(response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+				 conf = new Configuration("config.xml");
+				 pharmacy = new Pharmacy(conf);
+			}else {
+				System.exit(0);
+			}
 		try {
 			serialize.writePharmacy(pharmacy);
 		} catch (IOException e) {
-			System.out.println("asta e");
+			System.out.println("Serialization error");
 		}
 		}
 		else {
@@ -83,7 +89,7 @@ public class Client {
 			 try {
 				pharmacy = ser.readPharmacy();
 			} catch (ClassNotFoundException | IOException e) {
-				System.out.println("am prinso de cap");
+				System.out.println("file does not exists");
 			}
 		}
 	}
