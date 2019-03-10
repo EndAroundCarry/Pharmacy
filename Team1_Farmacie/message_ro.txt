@@ -45,6 +45,6 @@
 /message/indexMedicament =Introduceti indexul medicamentului de scos (sau 0 pentru a renunta):
 /message/nrDeScos =Introduceti numarul de cutii/subdiviziuni de scos:
 /message/putetiScoate=Puteti scoate: 
-/message/dinSertarul= Din sertarul 
-/message/confirmareScoatere= Confirmati scoaterea din sertar?
+/message/dinSertarul=Din sertarul 
+/message/confirmareScoatere=Confirmati scoaterea din sertar?
 /message/params3=S-au scos {0} buc.

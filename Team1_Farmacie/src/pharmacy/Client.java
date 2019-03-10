@@ -37,7 +37,7 @@ public class Client {
 		DataCreatorExample cr = new DataCreatorExample();
 		cr.createInitialData(db);*/
 
-	//	client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
+		client.loadSomeData(); // load some data iti pune niste date in farmacie sa nu mai bagi manual
 		client.run();
 		
 		

@@ -16,6 +16,7 @@ public class Pharmacy implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final List<Drawer> drawers = new ArrayList<>();
 	private final List<Medicine> medicines = new ArrayList<>();
+	private Language languageProp = new Language();
 
 	private final Configuration config;
 
@@ -253,13 +254,13 @@ public class Pharmacy implements Serializable {
 			for (Medicine medicine : drawer.getMedicinesInDrawer()) {
 				if (medicine.getBarcode().toLowerCase().contains(barcodeOrBrand.toLowerCase()) || //
 						medicine.getBrand().toLowerCase().contains(barcodeOrBrand.toLowerCase())) {
-					result += medicine + " este in sertarul: " + drawer.getName() + System.lineSeparator();
+					result += medicine + " ---> " + drawer.getName() + System.lineSeparator();
 					found = true;
 				}
 			}
 		}
 		if (!found) {
-			return "Nu s-a gasit medicamentul"; // TODO need to find a better solution for the ciobaneala
+			return "Not found"; // TODO need to find a better solution for the ciobaneala
 		}
 		return result;
 	}
@@ -301,7 +302,7 @@ public class Pharmacy implements Serializable {
 			if (drawer.getName().equalsIgnoreCase(drawerName)) {
 				found = true;
 				if (drawer.getMedicinesInDrawer().size() == 0) {
-					System.out.println("Sertar gol");
+					System.out.println("Empty");
 					break;
 				}
 				for (Medicine meds : drawer.getMedicinesInDrawer()) {
