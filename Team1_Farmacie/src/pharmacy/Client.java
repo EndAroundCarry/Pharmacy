@@ -225,17 +225,6 @@ public class Client {
 				System.out.println("Invalid input");
 				return;
 			}
-			/*switch (response.toLowerCase()) {
-			case "da":
-				pharmacy.removeFromDrawer(pharmacy.getRequestedQuantity(howManyToRemove, map, medToRemove), medToRemove);
-				System.out.println("S-au scos " + howManyToRemove + " buc de " + medToRemove);
-				break;
-			case "nu":
-				return;
-			default:
-				System.out.println("Invalid input");
-				
-			}*/
 		} catch (InsufficientStockException e) {
 			System.out.println(e.getMessage());
 		}
