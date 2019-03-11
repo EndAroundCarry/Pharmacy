@@ -171,10 +171,10 @@ public class Client {
   private void doInventory() {
     List<Medicine> medicines = new ArrayList<>();
     System.out.println(languageProp.getMessage("/message/idSertar"));
-    Drawer drawer = new Drawer(kb.readLine(), conf);
+    Drawer drawer = pharmacy.getDrawerByName(kb.readLine());
     int i = 0;
     scanItems(medicines, drawer, i);
-
+    System.out.println("Inventar terminat cu succes!");
   }
   public void showHistory(){
 	  List<Modification> mod=getPharmacy().getModifications();
@@ -184,15 +184,22 @@ public class Client {
   }
 
   private void scanItems(List<Medicine> medicines, Drawer drawer, int i) {
+	System.out.println("Barcode: ");
     String barcode = kb.readLine();
     while (!barcode.equals("stop")) {
       Medicine med;
+      Medicine clone;
       med = drawer.getMedicineByBarcode(barcode);
       if (med instanceof DivisibleMedicine) {
+    	clone = new DivisibleMedicine(med.getBarcode(), med.getBrand(), med.getDetails(), med.getBoxDetails(), med.getQuantity());
         System.out.println(languageProp.getMessage("/message/nrSubdiv"));
-        ((DivisibleMedicine) med).setQuantity(kb.readInt());
+        ((DivisibleMedicine) clone).setQuantity(kb.readInt());
+        medicines.add(clone);
       }
-      medicines.add(med);
+      else {
+    	medicines.add(med);
+      }
+  	System.out.println("Barcode: ");
       barcode = kb.readLine();
     }
     i++;
@@ -202,11 +209,15 @@ public class Client {
   private void compareInventory(List<Medicine> medicines, Drawer drawer, int i) {
     if (i < 2) {
       if (!drawer.isInDrawer(medicines)) {
+    	    System.out.println("Inventar incorect");
         scanItems(medicines, drawer, i + 1);
       }
-      System.out.println("Inventar corect.");
     }
+    
+    System.out.println("Aceste valori sunt cele corecte? (Da/Nu)");
+    if("da".equalsIgnoreCase(kb.readLine())){
     pharmacy.changeMedicineInDrawer(medicines, drawer.getName());
+    }
   }
 
   private void showSubmenuLang() {

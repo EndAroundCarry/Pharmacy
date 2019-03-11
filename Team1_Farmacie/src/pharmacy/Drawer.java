@@ -48,7 +48,7 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
 
   public Medicine getMedicineByBarcode(String barcode) {
     for (Medicine medicine : medicinesInDrawer) {
-      if (medicine.getBrand().contains(barcode)) {
+      if (medicine.getBarcode().contains(barcode)) {
         return medicine;
       }
     }
@@ -201,6 +201,9 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
   }
 
   public boolean isInDrawer(List<Medicine> medicines) {
+	  if(medicines.size() < medicinesInDrawer.size()) {
+		  return false;
+	  }
     for (int i = 0; i < medicinesInDrawer.size(); i++) {
 
       if (!medicinesInDrawer.contains(medicines.get(i))) {
