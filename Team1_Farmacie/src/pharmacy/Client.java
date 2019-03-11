@@ -133,12 +133,8 @@ public class Client {
   private void execute(String inputLine) {
 
     switch (inputLine) {
-    case "1":
-    	String  barcode = getValidBarcode(); 
-    	    if(barcode==null) {
-    	    	return;
-    	    }
-        addMedicineInSystem(barcode);
+      case "1":
+        addMedicineInSystem();
         break;
       case "2":
         addInStoc();
@@ -156,7 +152,7 @@ public class Client {
         //generare comanda
         break;
       case "7":
-        showHistory();
+        //vizualizare istoric
         break;
       case "8":
         showSubmenuDisplay();
@@ -181,15 +177,8 @@ public class Client {
 
   }
 
-  public void showHistory() {
-    List<Modification> modifications = getPharmacy().getModifications();
-    for (Modification modification : modifications) {
-      System.out.println(modification.toString());
-    }
-  }
-
   private void scanItems(List<Medicine> medicines, Drawer drawer, int i) {
-    String barcode = kb.readLine(); //de pus mesaj in multilang (adela)
+    String barcode = kb.readLine();
     while (!barcode.equals("stop")) {
       Medicine med;
       med = drawer.getMedicineByBarcode(barcode);
@@ -209,7 +198,7 @@ public class Client {
       if (!drawer.isInDrawer(medicines)) {
         scanItems(medicines, drawer, i + 1);
       }
-      System.out.println("Inventar corect."); //de pus multilanguage(adela)
+      System.out.println("Inventar corect.");
     }
     pharmacy.changeMedicineInDrawer(medicines, drawer.getName());
   }
@@ -323,95 +312,91 @@ public class Client {
   }
 
   public void addInStoc() {
-	    System.out.println(languageProp.getMessage("/message/verificaBarcode"));
-	    String barcode = kb.readLine();
-	    if (barcode.equals("")) {
-	      return;
-	    }
-	    if (!pharmacy.hasBarcode(barcode)) {
-	      System.out.println(languageProp.getMessage("/message/medicamentBarcodeInexistent") + languageProp.getMessage("/message/daNu"));
-	      String response = kb.readLine();
-	      if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
-	        addMedicineInSystem(barcode);
-	      }
-	    }
-	    if (pharmacy.hasBarcode(barcode)) {
-	      try {
-	        String suggestedDrawer = pharmacy.getRecommendedDrawer(barcode);
-	        System.out.println(languageProp.getMessageParam("/message/params", suggestedDrawer) + languageProp.getMessage("/message/daNu"));
-	        String response = kb.readLine();
-	        if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
-	          return;
-	        }
-	        if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
-	          pharmacy.addToSuggestedDrawer(suggestedDrawer, barcode);
-	          System.out.println(languageProp.getMessageParam("/message/params2", suggestedDrawer));
-	          addInStoc();
-	        }
-	      } catch (NoSpaceAvailableInDrawerException e) {
-	        System.out.println(e.getMessage());
-	      }
-	    }
-	  }
+    System.out.println(languageProp.getMessage("/message/verificaBarcode"));
+    String barcode = kb.readLine();
+    if (barcode.equals("")) {
+      return;
+    }
+    if (!pharmacy.hasBarcode(barcode)) {
+      System.out.println(languageProp.getMessage("/message/medicamentBarcodeInexistent") + languageProp.getMessage("/message/daNu"));
+      String response = kb.readLine();
+      if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+        addMedicineInSystem();
+      }
+    }
+    if (pharmacy.hasBarcode(barcode)) {
+      try {
+        String suggestedDrawer = pharmacy.getRecommendedDrawer(barcode);
+        System.out.println(languageProp.getMessageParam("/message/params", suggestedDrawer) + languageProp.getMessage("/message/daNu"));
+        String response = kb.readLine();
+        if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
+          return;
+        }
+        if (response.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+          pharmacy.addToSuggestedDrawer(suggestedDrawer, barcode);
+          System.out.println(languageProp.getMessageParam("/message/params2", suggestedDrawer));
+          addInStoc();
+        }
+      } catch (NoSpaceAvailableInDrawerException e) {
+        System.out.println(e.getMessage());
+      }
+    }
+  }
 
-	  public boolean checkBarcode(String barcode) {
-	    for (Medicine medicine : pharmacy.getMedicines()) {
-	      if (medicine.getBarcode().equals(barcode)) {
-	        return true;
-	      }
-	    }
-	    return false;
-	  }
+  public boolean checkBarcode(String barcode) {
+    for (Medicine medicinee : pharmacy.getMedicines()) {
+      if (medicinee.getBarcode().equals(barcode)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-	  public void addMedicineInSystem(String barcode) {
-	    
-	    System.out.println("Brand:");
-	    String brand = kb.readLine();
-	    System.out.println(languageProp.getMessage("/message/detalii"));
-	    String details = kb.readLine();
-	    System.out.println(languageProp.getMessage("/message/eDivizibil") + languageProp.getMessage("/message/daNu"));
-	    String typeRasp = kb.readLine();
-	    String type = "";
-	    int subdivisions = 0;
-	    if (typeRasp.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
-	      type += "divizibil";
-	      System.out.println(languageProp.getMessage("/message/nrSubdiv"));
-	      subdivisions += kb.readInt();
-	    } else {
-	      type += "intreg";
-	    }
-	    System.out.println(languageProp.getMessage("/message/detaliiCutie"));
-	    System.out.println(languageProp.getMessage("/message/lungime"));
-	    int lenght = kb.readInt();
-	    System.out.println(languageProp.getMessage("/message/latime"));
-	    int width = kb.readInt();
-	    System.out.println(languageProp.getMessage("/message/inaltime"));
-	    int height = kb.readInt();
-	    try {
-	      Box box = new Box(lenght, width, height);
-	      pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
-	      System.out.println(languageProp.getMessage("/message/confirmareAdaugare") + barcode);
-	    } catch (IllegalArgumentException e) {
-	      System.out.println(languageProp.getMessage("/message/respingereAdaugare"));
-	    }
-	  }
+  public void addMedicineInSystem() {
+    String barcode = "";
+    while (true) {
+      System.out.println("Barcode:");
+      barcode = kb.readLine();
+      if (!checkBarcode(barcode)) {
+        break;
+      } else {
+        System.out.println(languageProp.getMessage("/message/barcodeQuestion") + languageProp.getMessage("/message/daNu"));
+        String response = kb.readLine();
+        if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
+          return;
+        }
+      }
+    }
 
-	private String getValidBarcode() {
-		String barcode = "";
-		    while (true) {
-		      System.out.println("Barcode:");
-		      barcode = kb.readLine();
-		      if (!checkBarcode(barcode)) {
-		        break; // se opreste aici daca se introduce unu nefolosit
-		      } else {
-		        System.out.println(languageProp.getMessage("/message/barcodeQuestion") + languageProp.getMessage("/message/daNu"));
-		        String response = kb.readLine();
-		        if (response.equalsIgnoreCase(languageProp.getMessage("/message/nu"))) {
-		          return null; //iasa aici daca rasp e nu
-		        }
-		      }
-		    }
-		return barcode;
-	}
+    System.out.println("Brand:");
+    String brand = kb.readLine();
+    System.out.println(languageProp.getMessage("/message/detalii"));
+    String details = kb.readLine();
+    System.out.println(languageProp.getMessage("/message/eDivizibil") + languageProp.getMessage("/message/daNu"));
+    String typeRasp = kb.readLine();
+    String type = "";
+    int subdivisions = 0;
+    if (typeRasp.equalsIgnoreCase(languageProp.getMessage("/message/da"))) {
+      type += "divizibil";
+      System.out.println(languageProp.getMessage("/message/nrSubdiv"));
+      subdivisions += kb.readInt();
+    } else {
+      type += "intreg";
+    }
+    System.out.println(languageProp.getMessage("/message/detaliiCutie"));
+    System.out.println(languageProp.getMessage("/message/lungime"));
+    int lenght = kb.readInt();
+    System.out.println(languageProp.getMessage("/message/latime"));
+    int width = kb.readInt();
+    System.out.println(languageProp.getMessage("/message/inaltime"));
+    int height = kb.readInt();
+    try {
+      Box box = new Box(lenght, width, height);
+      pharmacy.addMedicine(barcode, brand, details, box, subdivisions, type);
+      System.out.println(languageProp.getMessage("/message/confirmareAdaugare") + barcode);
+    } catch (IllegalArgumentException e) {
+      System.out.println(languageProp.getMessage("/message/respingereAdaugare"));
+    }
+  }
 
 }
