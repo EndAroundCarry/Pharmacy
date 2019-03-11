@@ -6,12 +6,16 @@
 
 package pharmacy;
 
+import java.io.Serializable;
+
 /**
  * @author <a href="mailto:mpintea@ssi-schaefer-noell.com">mpintea</a>
  * @version $Revision: $, $Date: $, $Author: $
  */
 
-public class Modification {
+public class Modification implements Serializable {
+
+  private static final long serialVersionUID = 1L;
   String data;
   String id;
   String operatie;
