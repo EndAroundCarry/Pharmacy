@@ -13,5 +13,5 @@
 		<previousDays>1</previousDays>
 		<nextDays>7</nextDays>
 	</orderParams> 
-  <initClassName>com.ssn.common.InitialDataCreatorImpl</initClassName>
+  <initClassName>com.ssn.common.DataCreatorExample</initClassName>
 </config>
