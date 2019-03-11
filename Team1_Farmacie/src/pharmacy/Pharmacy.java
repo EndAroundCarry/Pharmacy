@@ -196,7 +196,7 @@ public class Pharmacy implements Serializable, DatabaseOperations {
       modifications.add(new Modification(generateCurrentDate(), id, "-", med.getBrand(), elementsToRemove));
     }
     if (med instanceof DivisibleMedicine) {
-      modifications.add(new Modification(generateCurrentDate(), id, "-", med.getBarcode(), elementsToRemove));
+      modifications.add(new Modification(generateCurrentDate(), id, "-", med.getBrand(), elementsToRemove));
     }
 
   }
