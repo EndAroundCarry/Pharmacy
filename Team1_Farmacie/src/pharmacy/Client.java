@@ -168,8 +168,6 @@ public class Client {
 	    }
 	  }
 
-
-
   private void doInventory() {
     List<Medicine> medicines = new ArrayList<>();
     System.out.println(languageProp.getMessage("/message/idSertar"));
@@ -295,7 +293,7 @@ public class Client {
       Map<String, Integer> map = pharmacy.getProductLocationForRequiredMedicine(medToRemove, howManyToRemove);
       System.out.println(languageProp.getMessage("/message/putetiScoate"));
       for (Entry<String, Integer> entry : map.entrySet()) {
-        System.out.println(languageProp.getMessage("/message/dinSertarul") + entry.getKey() + " --> " + entry.getValue() + " buc.");
+        System.out.println(languageProp.getMessage("/message/dinSertarul") + entry.getKey() + " "+ languageProp.getMessage("/message/scoatere") + entry.getValue() + " buc. " + medToRemove.getBrand() + ", barcode: " + medToRemove.getBarcode());
       }
       System.out.println(languageProp.getMessage("/message/confirmareScoatere") + languageProp.getMessage("/message/daNu"));
       String response = kb.readLine();
@@ -316,7 +314,7 @@ public class Client {
   public void searchMeds() {
     System.out.println(languageProp.getMessage("/message/textCautare"));
     String cheie = kb.readLine();
-    System.out.println(pharmacy.searchForMedicine(cheie));
+    pharmacy.searchForMedicine(cheie);
   }
 
   public void addInStoc() {

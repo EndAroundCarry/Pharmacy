@@ -42,3 +42,4 @@
 /message/dinSertarul= From drawer 
 /message/confirmareScoatere= Confirm medicine removal from drawer?
 /message/params3={0} pieces. has been removed.
+/message/scoatere= remove 

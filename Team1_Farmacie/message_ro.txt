@@ -48,3 +48,4 @@
 /message/dinSertarul=Din sertarul 
 /message/confirmareScoatere=Confirmati scoaterea din sertar?
 /message/params3=S-au scos {0} buc.
+/message/scoatere= scoateti 

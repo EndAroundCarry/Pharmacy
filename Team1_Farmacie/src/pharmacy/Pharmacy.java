@@ -281,23 +281,30 @@ public class Pharmacy implements Serializable, DatabaseOperations {
 		return false;
 	}
 
-	public String searchForMedicine(String barcodeOrBrand) {
-		String result = "";
+	public void searchForMedicine(String barcodeOrBrand) {
+		Map<Medicine, String> medsFound = new HashMap<>();
 		boolean found = false;
 		for (Drawer drawer : drawers) {
 			for (Medicine medicine : drawer.getMedicinesInDrawer()) {
 				if (medicine.getBarcode().toLowerCase().contains(barcodeOrBrand.toLowerCase()) || //
 						medicine.getBrand().toLowerCase().contains(barcodeOrBrand.toLowerCase())) {
-					result += medicine + " ---> " + drawer.getName() + System.lineSeparator();
+					
+					medsFound.put(medicine, drawer.getName());
 					found = true;
 				}
 			}
 		}
+		if(found) {
+			for (Map.Entry<Medicine, String> entry : medsFound.entrySet()) {
+				//System.out.println(entry.getKey() + ". Se gaseste in sertarul : " + entry.getValue());
+				System.out.println("Sertarul " + entry.getValue() + ": " + System.lineSeparator() + entry.getKey());
+			}
+		}
+		
 		if (!found) {
-			return "Nu s-a gasit medicamentul"; // TODO need to find a better
+			System.out.println("Medicine not found"); // TODO need to find a better
 												// solution for the ciobaneala
 		}
-		return result;
 	}
 
 	// used for unit testing use with care if necessary
@@ -337,7 +344,7 @@ public class Pharmacy implements Serializable, DatabaseOperations {
 			if (drawer.getName().equalsIgnoreCase(drawerName)) {
 				found = true;
 				if (drawer.getMedicinesInDrawer().size() == 0) {
-					System.out.println("Empty");
+					System.out.println("Empty!");
 					break;
 				}
 				for (Medicine meds : drawer.getMedicinesInDrawer()) {
