@@ -14,7 +14,7 @@
 /message/selecteazaLimba=Select language
 /message/confirmareSchimbareLimba=Language changed in 
 /message/Inapoi = Back
-/message/conf=Do you want to configurate the app?
+/message/conf=Do you want to make the initial configurations?
 
 /message/daNu =(yes/no)
 /message/da =yes

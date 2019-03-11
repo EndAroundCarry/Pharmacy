@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import exceptions.BarcodeAlreadyExistsException;
-
 /**
  * @author <a href="mailto:bgantu@ssi-schaefer-noell.com">bgantu</a>
  * @version $Revision: $, $Date: $, $Author: $

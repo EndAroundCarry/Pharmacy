@@ -1,3 +1,4 @@
+
 package pharmacy;
 
 import java.io.FileInputStream;
@@ -7,32 +8,41 @@ import java.util.Properties;
 
 public class Language implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Properties prop = new Properties();
+  private static final long serialVersionUID = 1L;
+  private final Properties prop = new Properties();
+  private final Configuration conf = new Configuration("config.xml");
 
-	public Language() {
-		try {
-			prop.load(new FileInputStream("message_ro.txt"));
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+  public Configuration getConf() {
+    return conf;
+  }
 
-	public String getMessage(String key) {
-		if (prop.getProperty(key) != null) {
-			return prop.getProperty(key);
-		}
-		return "!" + key;
-	}
+  public Language()
 
-	public Properties getProp() {
-		return prop;
-	}
+  {
+    try {
+      String numeFisier = "message_" + conf.getLanguages().get(0).toLowerCase() + ".txt";
+      prop.load(new FileInputStream(numeFisier));
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
-	public String getMessageParam(String key, Object param) {
+  public String getMessage(String key) {
+    if (prop.getProperty(key) != null) {
+      return prop.getProperty(key);
+    }
+    return "!" + key;
+  }
 
-		String result = getMessage(key);
-		result = result.replace("{" + 0 + "}", "" + param);	
-		return result;
-	}
+  public Properties getProp() {
+    return prop;
+  }
+
+  public String getMessageParam(String key, Object param) {
+
+    String result = getMessage(key);
+    result = result.replace("{" + 0 + "}", "" + param);
+    return result;
+  }
+
 }

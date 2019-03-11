@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
 
 public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
@@ -23,7 +22,8 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
   }
 
   private final Configuration config;
-//
+
+  //
   public Drawer(String name, Configuration config) {
     this.name = name;
     this.config = config;
@@ -46,18 +46,26 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
     return brandMeds;
   }
 
+  public Medicine getMedicineByBarcode(String barcode) {
+    for (Medicine medicine : medicinesInDrawer) {
+      if (medicine.getBrand().contains(barcode)) {
+        return medicine;
+      }
+    }
+    return null;
+  }
+
   public void addMedicineToList(Medicine medicine) {
-	  Box box=new Box(medicine.getBoxDetails().getLenght(), medicine.getBoxDetails().getWidth(), medicine.getBoxDetails().getHeight());
-	  
-	  if(medicine instanceof DivisibleMedicine){	  
-		 Medicine medToAdd=new DivisibleMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box, medicine.getQuantity());
-		 medicinesInDrawer.add(medToAdd);
-	  }
-	  else {
-		  Medicine medToAdd=new EntireBoxMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box);
-		  medicinesInDrawer.add(medToAdd);
-	  }
-    
+    Box box = new Box(medicine.getBoxDetails().getLenght(), medicine.getBoxDetails().getWidth(), medicine.getBoxDetails().getHeight());
+
+    if (medicine instanceof DivisibleMedicine) {
+      Medicine medToAdd = new DivisibleMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box, medicine.getQuantity());
+      medicinesInDrawer.add(medToAdd);
+    } else {
+      Medicine medToAdd = new EntireBoxMedicine(medicine.getBarcode(), medicine.getBrand(), medicine.getDetails(), box);
+      medicinesInDrawer.add(medToAdd);
+    }
+
   }
 
   private double getDrawerVolume() {
@@ -175,16 +183,16 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
     for (Medicine med : medicinesInDrawer) {
       if (medicine.equals(med)) {
         for (int i = 0; i < divisons; i++) {
-        	if(((DivisibleMedicine)med).getQuantity()==0){
-        		break;
-        	}
+          if (((DivisibleMedicine) med).getQuantity() == 0) {
+            break;
+          }
           ((DivisibleMedicine) med).removeDivision();
         }
       }
     }
     Iterator<Medicine> iterator = medicinesInDrawer.iterator();
     while (iterator.hasNext()) {
-      Medicine medicineToBeRemoved = (Medicine) iterator.next();
+      Medicine medicineToBeRemoved = iterator.next();
       if ((medicine.equals(medicineToBeRemoved) && medicineToBeRemoved.getQuantity() == 0)) {
         iterator.remove();
         break;
@@ -192,25 +200,14 @@ public class Drawer implements Comparable<Drawer>, Serializable, Cloneable {
     }
   }
 
-  //Returnez medicamentele scanate
-  public List<Medicine> scanDrawer() {
-    List<Medicine> medicines = new ArrayList<>();
-    Scanner in = new Scanner(System.in);
-    Medicine clona = null;
-    for (Medicine med : medicinesInDrawer) {
-      if (med instanceof DivisibleMedicine) {
-        clona = new DivisibleMedicine(med.getBarcode(), med.getBrand(), med.getDetails(), med.getBoxDetails(), med.getQuantity());
-        System.out.print("Cantitate subdiviziuni: ");
-        ((DivisibleMedicine) clona).setQuantity(Integer.parseInt(in.next())); // Aveam nevoie de un set pt a da nr de subdiviziuni
-        // BTW am fost nevoit sa scot final de la nrSubdiviziuni din DivizibleMedicine
-        medicines.add(clona);
-      } else {
-        medicines.add(med);
+  public boolean isInDrawer(List<Medicine> medicines) {
+    for (int i = 0; i < medicinesInDrawer.size(); i++) {
+
+      if (!medicinesInDrawer.contains(medicines.get(i))) {
+        return false;
       }
     }
-    //in.close();
-    ///////////////////////////aparent nu merge corect apelarea a doua daca inchid citirea la prima apelare
-    return medicines;
+    return valuesAreCorrect(medicines);
   }
 
   //Verific corectitudinea valorilor date de mine

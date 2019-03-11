@@ -18,7 +18,7 @@
 /message/confirmareSchimbareLimba=Limba a fost schimbata in 
 /message/Inapoi = Inapoi
 
-/message/conf=Configurati?
+/message/conf=Doriti sa faceti configuratia initiala?
 
 ---metode
 
