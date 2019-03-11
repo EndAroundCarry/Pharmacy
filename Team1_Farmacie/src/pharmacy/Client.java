@@ -152,7 +152,7 @@ public class Client {
         //generare comanda
         break;
       case "7":
-        //vizualizare istoric
+        showHistory();
         break;
       case "8":
         showSubmenuDisplay();
@@ -165,9 +165,7 @@ public class Client {
     }
   }
 
-  /**
-   * 
-   */
+
   private void doInventory() {
     List<Medicine> medicines = new ArrayList<>();
     System.out.println(languageProp.getMessage("/message/idSertar"));
@@ -175,6 +173,12 @@ public class Client {
     int i = 0;
     scanItems(medicines, drawer, i);
 
+  }
+  public void showHistory(){
+	  List<Modification> mod=getPharmacy().getModifications();
+	  for (Modification modification : mod) {
+		System.out.println(modification.toString());
+	}
   }
 
   private void scanItems(List<Medicine> medicines, Drawer drawer, int i) {
